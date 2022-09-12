@@ -1,34 +1,37 @@
-import { useState } from 'react';
-import reactLogo from './assets/react.svg';
+import React from 'react';
+import { Route, Routes } from 'react-router-dom';
+
+import { useQuery } from '@tanstack/react-query';
+
+import { useGetPokemonQuery } from './api/hooks';
+import { PokemonsPage } from './pages';
+
 import './App.scss';
 
-function App() {
-  const [count, setCount] = useState(0);
+const App: React.FC = () => {
+  const [offset, setOffset] = React.useState(0);
+  const { data, isFetching, fetchNextPage, isError } = useGetPokemonQuery();
+
+  if (isFetching) {
+    return <div>Loading...</div>;
+  }
+
+  if (isError) {
+    return <div>Error!</div>;
+  }
+
+  const pokemons = data.pages.reduce(
+    (acc, page) => [...acc, ...page.data.results],
+    []
+  );
+
+  console.log(pokemons);
 
   return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+    <div>
+      <button onClick={() => fetchNextPage()}>Increase offset</button>
     </div>
   );
-}
+};
 
 export default App;
