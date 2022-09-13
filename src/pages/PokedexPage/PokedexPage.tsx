@@ -21,7 +21,7 @@ export const PokedexPage = () => {
   return (
     <div className={styles.pageContainer}>
       <div className={styles.content}>
-        <div className={styles.card}></div>
+        <div className={styles.card}>card</div>
         <ul className={styles.list}>
           {pokemons.map((pokemon) => {
             const isActive = pokemon.id === selectedPokemonId;
