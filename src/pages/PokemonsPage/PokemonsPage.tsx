@@ -16,16 +16,14 @@ export const PokemonsPage = () => {
 
   const pokemons = results.map((result: any) => result.data.data);
 
-  console.log(pokemons);
-
   return (
     <div className="container mx-auto">
       <button onClick={() => setOffset((prevOffset) => prevOffset + 20)}>
         Load more
       </button>
       <div className="grid grid-cols-4 gap-5">
-        {pokemons.map((pokemon, index) => (
-          <Pokemon pokemon={pokemon} key={index} />
+        {pokemons.map((pokemon) => (
+          <Pokemon pokemon={pokemon} key={pokemon.id} />
         ))}
       </div>
     </div>
