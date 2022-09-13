@@ -1,20 +1,19 @@
-import { useInfiniteQuery } from '@tanstack/react-query';
+import { useQueries } from '@tanstack/react-query';
 
 import { getPokemon } from '../../requests';
 
-export const useGetPokemonQuery = () =>
-  useInfiniteQuery<any>(
-    ['pokemon'],
-    ({ pageParam = 0 }) =>
-      getPokemon({ params: { offset: pageParam, limit: 20 } }),
-    {
-      getNextPageParam: (lastPage, _pages) => {
-        const queries: string = lastPage.data.next.split('?').at(1);
-        const params = new URLSearchParams(queries);
+interface UseGetPokemonQueriesParams {
+  offset: number;
+}
 
-        const nextOffset = Number(params.get('offset'));
+const createQueries = (offset: number) =>
+  Array.from({ length: offset }, (_el, index) => {
+    const id = index + 1;
+    return {
+      queryKey: ['pokemon', index],
+      queryFn: () => getPokemon({ params: { id } }),
+    };
+  });
 
-        return nextOffset;
-      },
-    }
-  );
+export const useGetPokemonQueries = ({ offset }: UseGetPokemonQueriesParams) =>
+  useQueries<any>({ queries: createQueries(offset) });

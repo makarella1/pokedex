@@ -1,14 +1,13 @@
 import { AxiosRequestConfig } from 'axios';
 
-import { pokemonApi } from '../../pokemonApi';
+import { pokemonApi } from '../../../pokemonApi';
 
 interface RequestPokemonData {
   params: {
-    offset: number;
-    limit: number;
+    id: number;
   };
   config?: AxiosRequestConfig;
 }
 
 export const getPokemon = ({ params, config }: RequestPokemonData) =>
-  pokemonApi.get('pokemon', { ...config, params });
+  pokemonApi.get(`pokemon/${params.id}`, { ...config });

@@ -23,12 +23,20 @@ module.exports = {
     sourceType: 'module',
     project: ['./tsconfig.json'],
   },
+  ignorePatterns: ['tailwind.config.cjs', 'postcss.config.cjs'],
   plugins: ['react', '@typescript-eslint', 'prettier', 'simple-import-sort'],
   rules: {
     'react/prop-types': 0,
     'react/react-in-jsx-scope': 0,
     '@typescript-eslint/no-shadow': 0,
-    '@typescript-eslint/no-unused-vars': 1,
+    '@typescript-eslint/no-unused-vars': [
+      'warn', // or "error"
+      {
+        argsIgnorePattern: '^_',
+        varsIgnorePattern: '^_',
+        caughtErrorsIgnorePattern: '^_',
+      },
+    ],
     'consistent-return': 0,
     'react/function-component-definition': [
       2,
