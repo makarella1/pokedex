@@ -7,4 +7,4 @@ interface UseGetPokemonQueryParams {
 }
 
 export const useGetPokemonQuery = ({ id }: UseGetPokemonQueryParams) =>
-  useQuery<any>(['pokemon', id], () => getPokemon({ params: { id } }));
+  useQuery(['pokemon', id], () => getPokemon({ params: { id } }));

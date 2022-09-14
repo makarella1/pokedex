@@ -1,0 +1,23 @@
+.nav {
+  @apply shadow-lg px-20 py-4 flex justify-between items-center mb-4;
+}
+
+.logoContainer {
+  @apply flex items-center;
+}
+
+.logo {
+  @apply w-36 h-14 mr-10;
+}
+
+.title {
+  @apply font-bold text-xl;
+}
+
+.navLinks {
+  @apply flex;
+}
+
+.navLink {
+  @apply text-lg first-of-type:mr-8;
+}

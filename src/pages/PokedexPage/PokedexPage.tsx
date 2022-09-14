@@ -1,27 +1,106 @@
 import { clsx } from 'clsx';
 import React from 'react';
 
-import { useGetPokemonQueries } from '../../api/hooks';
+import {
+  useGetEvolutionChainQuery,
+  useGetPokemonQueries,
+} from '../../api/hooks';
 
-import styles from './Pokedex.module.css';
+import styles from './PokedexPage.module.css';
 
-export const PokedexPage = () => {
-  const [offset, setOffset] = React.useState(10);
-  const [selectedPokemonId, setSelectedPokemonId] = React.useState(0);
+const transformStatName = (statName: string) => {
+  const transformedName = statName
+    .split('-')
+    .flatMap((word: string) =>
+      word.replace(word.at(0)!, word.at(0)!.toUpperCase())
+    )
+    .join(' ');
+
+  return transformedName;
+};
+
+export const PokedexPage: React.FC = () => {
+  const [offset, setOffset] = React.useState(6);
+  const [selectedPokemonId, setSelectedPokemonId] = React.useState(1);
   const results = useGetPokemonQueries({ offset });
 
   const isLoading = results.some((result) => result.isLoading);
+
+  const { data } = useGetEvolutionChainQuery({
+    id: selectedPokemonId,
+    config: { enabled: !isLoading },
+  });
 
   if (isLoading) {
     return <div>Loading...</div>;
   }
 
-  const pokemons = results.map((result: any) => result.data.data);
+  const pokemons = results.map((result) => result.data!.data);
+
+  const selectedPokemon = pokemons.find(
+    (pokemon) => pokemon.id === selectedPokemonId
+  );
+
+  const selectedPokemonStats = selectedPokemon?.stats.map((stat, index) => {
+    const transformedStatName = transformStatName(stat.stat.name);
+
+    return (
+      <li className={styles.cardStatItem} key={index}>
+        {transformedStatName}: {stat.base_stat}
+      </li>
+    );
+  });
+
+  const selectedPokemonAbilities = selectedPokemon?.abilities.map(
+    ({ ability }, index) => {
+      const transformedAbilityName = transformStatName(ability.name);
+
+      return (
+        <li className={styles.cardStatItem} key={index}>
+          <div>{transformedAbilityName}</div>
+        </li>
+      );
+    }
+  );
+
+  const selectedPokemonTypes = selectedPokemon?.types.map(({ type }, index) => {
+    const transformedTypeName = transformStatName(type.name);
+
+    return (
+      <div className={styles.cardType} key={index}>
+        {transformedTypeName}
+      </div>
+    );
+  });
 
   return (
     <div className={styles.pageContainer}>
       <div className={styles.content}>
-        <div className={styles.card}>card</div>
+        <div className={styles.card}>
+          <div className={styles.cardTitle}>
+            <div className={styles.cardName}>{selectedPokemon?.name}</div>
+            <div className={styles.cardId}>
+              #{`${selectedPokemon?.id}`.padStart(3, '0')}
+            </div>
+          </div>
+          <div className={styles.cardTypes}>{selectedPokemonTypes}</div>
+          <div>
+            <img
+              src={selectedPokemon?.sprites.front_default ?? ''}
+              alt={selectedPokemon?.name}
+            />
+          </div>
+          <div className={styles.cardInfo}>
+            <div>
+              <h3 className={styles.cardInfoTitle}>Stats</h3>
+              <ul>{selectedPokemonStats}</ul>
+            </div>
+            <div>
+              <h3 className={styles.cardInfoTitle}>Abilities</h3>
+              <ul>{selectedPokemonAbilities}</ul>
+            </div>
+          </div>
+        </div>
         <ul className={styles.list}>
           {pokemons.map((pokemon) => {
             const isActive = pokemon.id === selectedPokemonId;
@@ -30,7 +109,6 @@ export const PokedexPage = () => {
               <li
                 className={clsx(
                   styles.pokemonItem,
-                  'group',
                   isActive && styles.pokemonItemActive
                 )}
                 key={pokemon.id}
@@ -46,8 +124,8 @@ export const PokedexPage = () => {
               >
                 <div className={styles.pokemonImageContainer}>
                   <img
-                    className={`${styles.pokemonImage} group-hover:scale-110`}
-                    src={pokemon.sprites.front_default}
+                    className={styles.pokemonImage}
+                    src={pokemon.sprites.front_default ?? ''}
                     alt={pokemon.name}
                   />
                 </div>

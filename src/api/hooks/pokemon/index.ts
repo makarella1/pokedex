@@ -16,4 +16,4 @@ const createQueries = (offset: number) =>
   });
 
 export const useGetPokemonQueries = ({ offset }: UseGetPokemonQueriesParams) =>
-  useQueries<any>({ queries: createQueries(offset) });
+  useQueries({ queries: createQueries(offset) });

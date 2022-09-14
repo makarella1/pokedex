@@ -3,7 +3,7 @@ import React from 'react';
 import { useGetPokemonQueries } from '../../api/hooks';
 import { Pokemon } from '../../components';
 
-export const PokemonsPage = () => {
+export const PokemonsPage: React.FC = () => {
   const [offset, setOffset] = React.useState(20);
 
   const results = useGetPokemonQueries({ offset });

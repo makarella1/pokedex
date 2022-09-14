@@ -2,15 +2,20 @@ import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 
 import { ROUTES } from './utils/constants';
-import { PokedexPage, PokemonsPage } from './pages';
+import { Navbar } from './components';
+import { PokedexPage, PokemonPage, PokemonsPage } from './pages';
 
 import './App.scss';
 
 const App: React.FC = () => (
-  <Routes>
-    <Route path={ROUTES.POKEMONS} element={<PokemonsPage />} />
-    <Route path={ROUTES.POKEDEX} element={<PokedexPage />} />
-  </Routes>
+  <>
+    <Navbar />
+    <Routes>
+      <Route path={ROUTES.POKEMONS} element={<PokemonsPage />} />
+      <Route path={ROUTES.POKEDEX} element={<PokedexPage />} />
+      <Route path={ROUTES.POKEMON} element={<PokemonPage />} />
+    </Routes>
+  </>
 );
 
 export default App;
