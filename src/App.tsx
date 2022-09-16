@@ -13,7 +13,7 @@ const App: React.FC = () => (
     <Routes>
       <Route path={ROUTES.POKEMONS} element={<PokemonsPage />} />
       <Route path={ROUTES.POKEDEX} element={<PokedexPage />} />
-      <Route path={ROUTES.POKEMON} element={<PokemonPage />} />
+      <Route path={ROUTES.POKEMON} element={<PokemonPage />} />s
     </Routes>
   </>
 );

@@ -6,5 +6,12 @@ interface UseGetPokemonQueryParams {
   id: number;
 }
 
-export const useGetPokemonQuery = ({ id }: UseGetPokemonQueryParams) =>
-  useQuery(['pokemon', id], () => getPokemon({ params: { id } }));
+export const useGetPokemonQuery = ({
+  params,
+  config,
+}: RequestQueryParams<UseGetPokemonQueryParams>) =>
+  useQuery(
+    ['pokemon', params?.id],
+    () => getPokemon({ params: { id: params!.id } }),
+    config
+  );

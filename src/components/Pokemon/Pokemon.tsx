@@ -7,7 +7,7 @@ interface PokemonProps {
 export const Pokemon: React.FC<PokemonProps> = ({ pokemon }) => (
   <div className="flex flex-col justify-center items-center shadow rounded p-4">
     <img
-      className="w-24 h-24"
+      className="w-36 h-36"
       src={pokemon.sprites.front_default}
       alt={pokemon.name}
     />

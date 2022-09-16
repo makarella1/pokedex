@@ -3,26 +3,16 @@ import React from 'react';
 
 import {
   useGetEvolutionChainQuery,
-  useGetPokemonQueries,
+  useGetPokemonInfiniteQuery,
 } from '../../api/hooks';
+import { getPokemonId, transformStatName } from '../../utils/helpers';
 
 import styles from './PokedexPage.module.css';
-
-const transformStatName = (statName: string) => {
-  const transformedName = statName
-    .split('-')
-    .flatMap((word: string) =>
-      word.replace(word.at(0)!, word.at(0)!.toUpperCase())
-    )
-    .join(' ');
-
-  return transformedName;
-};
 
 export const PokedexPage: React.FC = () => {
   const [offset, setOffset] = React.useState(6);
   const [selectedPokemonId, setSelectedPokemonId] = React.useState(1);
-  const results = useGetPokemonQueries({ offset });
+  const results = useGetPokemonInfiniteQuery();
 
   const isLoading = results.some((result) => result.isLoading);
 
@@ -80,7 +70,7 @@ export const PokedexPage: React.FC = () => {
           <div className={styles.cardTitle}>
             <div className={styles.cardName}>{selectedPokemon?.name}</div>
             <div className={styles.cardId}>
-              #{`${selectedPokemon?.id}`.padStart(3, '0')}
+              {getPokemonId(selectedPokemon?.id)}
             </div>
           </div>
           <div className={styles.cardTypes}>{selectedPokemonTypes}</div>
