@@ -1,0 +1,35 @@
+.pokemonCard {
+  @apply flex flex-col shadow rounded-xl p-6 cursor-default;
+}
+
+.pokemonCard img {
+  @apply w-48 h-48 mx-auto;
+}
+
+.info {
+  @apply flex justify-between;
+}
+
+.infoTitle {
+  @apply text-2xl font-bold;
+}
+
+.pokemonCardStat {
+  @apply border-b border-black pb-1 mb-2;
+}
+
+.cardTypes {
+  @apply flex mt-2 mx-auto mb-2;
+}
+
+.pokemonCardType {
+  @apply mr-1 px-2 py-1 text-white font-semibold bg-green-400 rounded-2xl;
+}
+
+.openBtn {
+  @apply flex items-center justify-center bg-green-600 text-white font-bold p-2 rounded-xl mt-2;
+}
+
+.closeBtn {
+  @apply rounded-full bg-inherit flex items-center justify-center w-6 h-6 self-end;
+}
