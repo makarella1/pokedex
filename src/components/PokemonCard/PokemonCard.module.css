@@ -1,21 +1,17 @@
 .pokemonCard {
-  @apply flex flex-col shadow rounded-xl p-6 cursor-default;
+  @apply bg-white z-30 fixed flex flex-col justify-between p-6 cursor-default;
+  @apply w-screen h-screen;
+
+  @apply sm:left-1/2 sm:top-1/2 sm:-translate-x-1/2 sm:-translate-y-1/2 sm:overflow-y-scroll sm:rounded-xl sm:w-1/2 sm:h-1/2;
+  @apply xl:w-1/3;
 }
 
 .pokemonCard img {
-  @apply w-48 h-48 mx-auto;
+  @apply w-52 h-52 mx-auto;
 }
 
 .info {
   @apply flex justify-between;
-}
-
-.infoTitle {
-  @apply text-2xl font-bold;
-}
-
-.pokemonCardStat {
-  @apply border-b border-black pb-1 mb-2;
 }
 
 .cardTypes {
@@ -27,9 +23,17 @@
 }
 
 .openBtn {
-  @apply flex items-center justify-center bg-green-600 text-white font-bold p-2 rounded-xl mt-2;
+  @apply flex items-center justify-center bg-green-600 text-white font-bold px-2 py-4 rounded-xl mt-2;
 }
 
 .closeBtn {
   @apply rounded-full bg-inherit flex items-center justify-center w-6 h-6 self-end;
+}
+
+.cardTop {
+  @apply flex justify-between items-center;
+}
+
+.cardTitle {
+  @apply text-2xl font-bold;
 }

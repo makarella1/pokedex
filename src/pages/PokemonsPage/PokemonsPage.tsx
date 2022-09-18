@@ -1,6 +1,6 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import { useInView } from 'react-intersection-observer';
-import { useNavigate } from 'react-router-dom';
 
 import { useGetPokemonInfiniteQuery } from '../../api/hooks';
 import { PokemonCard } from '../../components';
@@ -17,13 +17,17 @@ export const PokemonsPage: React.FC = () => {
     Pokemon['id'] | null
   >(null);
 
-  const navigate = useNavigate();
-
   React.useEffect(() => {
     if (inView && hasNextPage) {
       fetchNextPage();
     }
   }, [inView]);
+
+  React.useEffect(() => {
+    const overflowOptions = selectedPokemonId !== null ? 'hidden' : 'unset';
+
+    document.body.setAttribute('style', `overflow:${overflowOptions}`);
+  }, [selectedPokemonId]);
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -63,11 +67,11 @@ export const PokemonsPage: React.FC = () => {
                 <div className={styles.pokemonName}>{pokemon.name}</div>
                 <div>{getPokemonId(String(index + 1))}</div>
               </div>
-              {selectedPokemonId === pokemonId && (
-                <div className={styles.pokemonInfo}>
-                  <PokemonCard id={pokemonId} onClose={setSelectedPokemonId} />
-                </div>
-              )}
+              {selectedPokemonId === pokemonId &&
+                ReactDOM.createPortal(
+                  <PokemonCard id={pokemonId} onClose={setSelectedPokemonId} />,
+                  document.querySelector('#modal') as HTMLDivElement
+                )}
             </div>
           );
         })}

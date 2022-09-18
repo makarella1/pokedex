@@ -1,0 +1,7 @@
+.infoTitle {
+  @apply text-2xl font-bold;
+}
+
+.pokemonCardStat {
+  @apply border-b border-black pb-1 mb-2;
+}

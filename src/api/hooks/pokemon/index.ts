@@ -5,18 +5,18 @@ import { getPokemons } from '../../requests/pokemon';
 const POKEMONS_REQUEST_LIMIT = 30;
 const MAX_POKEMONS_COUNT = 900;
 
-interface UseGetPokemonInfiniteQuery {
-  offset?: number;
-}
-
-export const useGetPokemonInfiniteQuery = () =>
+export const useGetPokemonInfiniteQuery = (
+  settings?: RequestInfinityQuerySettings<typeof getPokemons>
+) =>
   useInfiniteQuery(
     ['pokemon'],
     ({ pageParam = 0 }) =>
       getPokemons({
         params: { offset: pageParam, limit: POKEMONS_REQUEST_LIMIT },
+        ...(settings?.config && { config: settings.config }),
       }),
     {
+      ...(settings?.options && settings.options),
       getNextPageParam: (lastPage, _allPages) => {
         const queries = lastPage.data.next?.split('?').at(1);
 

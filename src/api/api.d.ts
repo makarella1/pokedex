@@ -1,4 +1,22 @@
-interface RequestQueryParams<T> {
-  params?: T;
-  config?: any;
+type RequestParams<Params> = Params;
+
+interface RequestInfinityQuerySettings<Func = {}> {
+  config?: import('axios').AxiosRequestConfig;
+  options?: import('@tanstack/react-query').UseQueryOptions<
+    Awaited<ReturnType<Func>>,
+    any,
+    Awaited<ReturnType<Func>>,
+    Awaited<ReturnType<Func>>,
+    any
+  >;
+}
+
+interface RequestQuerySettings<Func = {}> {
+  config?: import('axios').AxiosRequestConfig;
+  options?: import('@tanstack/react-query').UseQueryOptions<
+    Awaited<ReturnType<Func>>,
+    any,
+    Awaited<ReturnType<Func>>,
+    any
+  >;
 }

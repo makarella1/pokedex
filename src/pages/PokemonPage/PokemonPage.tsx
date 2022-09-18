@@ -6,9 +6,7 @@ import { useGetPokemonQuery } from '../../api/hooks';
 export const PokemonPage: React.FC = () => {
   const { pokemonId } = useParams();
 
-  const { data } = useGetPokemonQuery({
-    params: { id: +pokemonId! },
-  });
+  const { data } = useGetPokemonQuery({ id: +pokemonId! });
 
   return <div className="container mx-auto">{data?.data.name}</div>;
 };
