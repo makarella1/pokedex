@@ -3,21 +3,22 @@ import { useNavigate } from 'react-router-dom';
 
 import { useGetPokemonQuery } from '../../api/hooks';
 import { getPokemonId, transformStatName } from '../../utils/helpers';
-
-import { PokemonStat } from './PokemonStat/PokemonStat';
-import { PokemonTypes } from './PokemonTypes/PokemonTypes';
+import { PokemonStat, PokemonTypes } from '../pokemon';
 
 import styles from './PokemonCard.module.css';
 
 interface PokemonCardProps {
   id: Pokemon['id'];
-  onClose: (id: null) => void;
+  onCloseModal: () => void;
 }
 
-export const PokemonCard: React.FC<PokemonCardProps> = ({ id, onClose }) => {
+export const PokemonCard: React.FC<PokemonCardProps> = ({
+  id,
+  onCloseModal,
+}) => {
   const navigate = useNavigate();
 
-  const { data, isLoading } = useGetPokemonQuery({ id });
+  const { data, isLoading } = useGetPokemonQuery({ option: id });
 
   if (isLoading || !data) {
     return null;
@@ -25,8 +26,9 @@ export const PokemonCard: React.FC<PokemonCardProps> = ({ id, onClose }) => {
 
   const { data: pokemon } = data;
 
-  const closeCardHandler = () => {
-    onClose(null);
+  const openPageHandler = () => {
+    onCloseModal();
+    navigate(`pokemon/${id}`);
   };
 
   const pokemonStats = pokemon.stats.map((stat) => {
@@ -46,7 +48,7 @@ export const PokemonCard: React.FC<PokemonCardProps> = ({ id, onClose }) => {
           <p className={styles.cardTitle}>{transformStatName(pokemon.name)}</p>
           <p>{getPokemonId(String(pokemon.id))}</p>
         </div>
-        <button className={styles.closeBtn} onClick={closeCardHandler}>
+        <button className={styles.closeBtn} onClick={() => onCloseModal()}>
           <IoMdClose size={20} />
         </button>
       </div>
@@ -60,10 +62,7 @@ export const PokemonCard: React.FC<PokemonCardProps> = ({ id, onClose }) => {
         <PokemonStat title="Abilities" stats={pokemonAbilities} />
       </div>
 
-      <button
-        className={styles.openBtn}
-        onClick={() => navigate(`pokemon/${id}`)}
-      >
+      <button className={styles.openBtn} onClick={openPageHandler}>
         Open
       </button>
     </div>

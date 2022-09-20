@@ -1,3 +1,4 @@
+import { nanoid } from 'nanoid';
 import React from 'react';
 
 import { PokemonType } from '../PokemonType/PokemonType';
@@ -10,8 +11,8 @@ interface PokemonTypesProps {
 
 export const PokemonTypes: React.FC<PokemonTypesProps> = ({ types }) => (
   <div className={styles.types}>
-    {types.map(({ type }, index) => (
-      <PokemonType type={type} key={index} />
+    {types.map(({ type }) => (
+      <PokemonType type={type} key={nanoid()} />
     ))}
   </div>
 );

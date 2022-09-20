@@ -6,7 +6,7 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
 import App from './App';
 
-import './index.scss';
+import './assets/css/global.css';
 
 const client = new QueryClient();
 

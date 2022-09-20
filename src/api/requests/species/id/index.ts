@@ -2,17 +2,17 @@ import { AxiosRequestConfig } from 'axios';
 
 import { pokemonApi } from '../../../pokemonApi';
 
-interface GetEvolutionChainParams {
+interface GetPokemonSpeciesParams {
   params: {
     id: Pokemon['id'];
   };
   config?: AxiosRequestConfig;
 }
 
-export const getEvolutionChain = ({
+export const getPokemonSpecies = ({
   params,
   config,
-}: GetEvolutionChainParams) =>
-  pokemonApi.get<EvolutionChain>(`evolution-chain/${params.id}`, {
+}: GetPokemonSpeciesParams) =>
+  pokemonApi.get<PokemonSpecies>(`pokemon-species/${params.id}`, {
     ...config,
   });

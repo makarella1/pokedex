@@ -1,0 +1,15 @@
+.evolution {
+  @apply rounded-lg shadow-lg p-1 border-2;
+}
+
+.evolutionActive {
+  @apply border-orange-300 border-2;
+}
+
+.pokemonImage {
+  @apply w-24 h-24 mx-auto;
+}
+
+.name {
+  @apply text-center font-semibold;
+}

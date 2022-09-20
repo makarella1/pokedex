@@ -1,4 +1,5 @@
-export * from './evolution-chain/id';
 export * from './pokemon';
-export * from './pokemon/id';
+export * from './pokemons';
 export * from './stat/id';
+export * from './useGetEvolutionChainQuery';
+export * from './useGetPokemonSpeciesQuery';

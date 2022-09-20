@@ -2,13 +2,12 @@ import { AxiosRequestConfig } from 'axios';
 
 import { pokemonApi } from '../../pokemonApi';
 
-interface RequestPokemonsParams {
+interface GetPokemonParams {
   params: {
-    offset: number;
-    limit: number;
+    option: Pokemon['id'] | Pokemon['name'];
   };
   config?: AxiosRequestConfig;
 }
 
-export const getPokemons = ({ params, config }: RequestPokemonsParams) =>
-  pokemonApi.get<NamedAPIResourceList>(`pokemon`, { params, ...config });
+export const getPokemon = ({ params, config }: GetPokemonParams) =>
+  pokemonApi.get<Pokemon>(`pokemon/${params.option}`, { ...config });

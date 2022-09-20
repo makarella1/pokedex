@@ -1,3 +1,4 @@
+import { nanoid } from 'nanoid';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { useInView } from 'react-intersection-observer';
@@ -27,6 +28,10 @@ export const PokemonsPage: React.FC = () => {
     const overflowOptions = selectedPokemonId !== null ? 'hidden' : 'unset';
 
     document.body.setAttribute('style', `overflow:${overflowOptions}`);
+
+    return () => {
+      document.body.setAttribute('style', `overflow:unset`);
+    };
   }, [selectedPokemonId]);
 
   if (isLoading) {
@@ -47,7 +52,7 @@ export const PokemonsPage: React.FC = () => {
           return (
             <div
               className={styles.pokemonContainer}
-              key={index}
+              key={nanoid()}
               onClick={() => {
                 if (pokemonId !== selectedPokemonId) {
                   setSelectedPokemonId(pokemonId);
@@ -69,7 +74,10 @@ export const PokemonsPage: React.FC = () => {
               </div>
               {selectedPokemonId === pokemonId &&
                 ReactDOM.createPortal(
-                  <PokemonCard id={pokemonId} onClose={setSelectedPokemonId} />,
+                  <PokemonCard
+                    id={pokemonId}
+                    onCloseModal={() => setSelectedPokemonId(null)}
+                  />,
                   document.querySelector('#modal') as HTMLDivElement
                 )}
             </div>

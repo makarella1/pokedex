@@ -5,8 +5,6 @@ import { ROUTES } from './utils/constants';
 import { Navbar } from './components';
 import { PokedexPage, PokemonPage, PokemonsPage } from './pages';
 
-import './App.scss';
-
 const App: React.FC = () => (
   <>
     <Navbar />

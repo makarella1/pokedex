@@ -1,30 +1,21 @@
-import { useInfiniteQuery } from '@tanstack/react-query';
+import { useQuery } from '@tanstack/react-query';
 
-import { getPokemons } from '../../requests/pokemon';
+import { getPokemon } from '../../requests/pokemon';
 
-const POKEMONS_REQUEST_LIMIT = 30;
-const MAX_POKEMONS_COUNT = 900;
+interface UseGetPokemonQueryParams {
+  option: number | string;
+}
 
-export const useGetPokemonInfiniteQuery = (
-  settings?: RequestInfinityQuerySettings<typeof getPokemons>
+export const useGetPokemonQuery = (
+  params: RequestParams<UseGetPokemonQueryParams>,
+  settings?: RequestQuerySettings<typeof getPokemon>
 ) =>
-  useInfiniteQuery(
-    ['pokemon'],
-    ({ pageParam = 0 }) =>
-      getPokemons({
-        params: { offset: pageParam, limit: POKEMONS_REQUEST_LIMIT },
-        ...(settings?.config && { config: settings.config }),
+  useQuery(
+    ['pokemon', params?.option],
+    () =>
+      getPokemon({
+        params,
+        ...(settings?.config && { config: settings?.config }),
       }),
-    {
-      ...(settings?.options && settings.options),
-      getNextPageParam: (lastPage, _allPages) => {
-        const queries = lastPage.data.next?.split('?').at(1);
-
-        const offset = Number(new URLSearchParams(queries).get('offset'));
-
-        if (offset !== MAX_POKEMONS_COUNT) {
-          return offset;
-        }
-      },
-    }
+    settings?.options && settings.options
   );

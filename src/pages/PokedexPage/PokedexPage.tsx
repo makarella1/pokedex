@@ -1,8 +1,9 @@
+import { nanoid } from 'nanoid';
 import { clsx } from 'clsx';
 import React from 'react';
 
 import {
-  useGetEvolutionChainQuery,
+  // useGetEvolutionChainQuery,
   useGetPokemonInfiniteQuery,
 } from '../../api/hooks';
 import { getPokemonId, transformStatName } from '../../utils/helpers';
@@ -31,33 +32,33 @@ export const PokedexPage: React.FC = () => {
     (pokemon) => pokemon.id === selectedPokemonId
   );
 
-  const selectedPokemonStats = selectedPokemon?.stats.map((stat, index) => {
+  const selectedPokemonStats = selectedPokemon?.stats.map((stat) => {
     const transformedStatName = transformStatName(stat.stat.name);
 
     return (
-      <li className={styles.cardStatItem} key={index}>
+      <li className={styles.cardStatItem} key={nanoid()}>
         {transformedStatName}: {stat.base_stat}
       </li>
     );
   });
 
   const selectedPokemonAbilities = selectedPokemon?.abilities.map(
-    ({ ability }, index) => {
+    ({ ability }) => {
       const transformedAbilityName = transformStatName(ability.name);
 
       return (
-        <li className={styles.cardStatItem} key={index}>
+        <li className={styles.cardStatItem} key={nanoid()}>
           <div>{transformedAbilityName}</div>
         </li>
       );
     }
   );
 
-  const selectedPokemonTypes = selectedPokemon?.types.map(({ type }, index) => {
+  const selectedPokemonTypes = selectedPokemon?.types.map(({ type }) => {
     const transformedTypeName = transformStatName(type.name);
 
     return (
-      <div className={styles.cardType} key={index}>
+      <div className={styles.cardType} key={nanoid()}>
         {transformedTypeName}
       </div>
     );

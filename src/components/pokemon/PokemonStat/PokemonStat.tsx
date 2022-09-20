@@ -1,3 +1,4 @@
+import { nanoid } from 'nanoid';
 import React from 'react';
 
 import styles from './PokemonStat.module.css';
@@ -8,8 +9,8 @@ interface PokemonStatProps {
 }
 
 export const PokemonStat: React.FC<PokemonStatProps> = ({ title, stats }) => {
-  const statItems = stats.map((stat, index) => (
-    <li className={styles.pokemonCardStat} key={index}>
+  const statItems = stats.map((stat) => (
+    <li className={styles.pokemonCardStat} key={nanoid()}>
       {stat}
     </li>
   ));
