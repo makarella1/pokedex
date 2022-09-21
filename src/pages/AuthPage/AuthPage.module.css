@@ -1,0 +1,11 @@
+.page {
+  @apply flex justify-center items-center h-screen;
+}
+
+.registerForm {
+  @apply flex flex-col gap-2;
+}
+
+.formInput {
+  @apply px-2 py-4 rounded-lg w-full;
+}
