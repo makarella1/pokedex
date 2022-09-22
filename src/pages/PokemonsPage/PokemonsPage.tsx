@@ -30,7 +30,7 @@ export const PokemonsPage: React.FC = () => {
     document.body.setAttribute('style', `overflow:${overflowOptions}`);
 
     return () => {
-      document.body.setAttribute('style', `overflow:unset`);
+      document.body.setAttribute('style', `overflow-y:unset`);
     };
   }, [selectedPokemonId]);
 

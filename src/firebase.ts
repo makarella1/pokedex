@@ -36,15 +36,18 @@ export const registerWithEmailAndPassword = async (
   password: string
 ) => {
   try {
-    const { user: newUser } = await createUserWithEmailAndPassword(
+    const { user: userData } = await createUserWithEmailAndPassword(
       auth,
       user.email,
       password
     );
 
+    const newUser = { ...userData };
+
+    newUser.displayName = `${user.firstName} ${user.lastName}`;
+
     await addDoc(collection(db, 'users'), {
-      uid: newUser.uid,
-      ...user,
+      ...newUser,
     });
   } catch (error) {
     console.log(error);

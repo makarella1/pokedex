@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 
 import { useGetPokemonQuery } from '../../../../api/hooks';
 import { transformStatName } from '../../../../utils/helpers';
+import { PokemonType } from '../../PokemonType/PokemonType';
 
 import styles from './PokemonEvolutionChainItem.module.css';
 
@@ -30,17 +31,28 @@ export const PokemonEvolutionChainItem: React.FC<
 
   const uppercasedName = transformStatName(name);
 
+  const { types } = pokemon;
+
   return (
-    <button
-      className={clsx(styles.evolution, isActive && styles.evolutionActive)}
-      onClick={() => navigate(`/pokemon/${pokemon.id}`)}
-    >
-      <img
-        className={styles.pokemonImage}
-        src={pokemon.sprites.front_default ?? ''}
-        alt={pokemon.name}
-      />
-      <p className={styles.name}>{uppercasedName}</p>
-    </button>
+    <div className={styles.evolutionContainer}>
+      <button
+        className={clsx(styles.evolution, isActive && styles.evolutionActive)}
+        onClick={() => navigate(`/pokemon/${pokemon.id}`)}
+      >
+        <img
+          className={styles.pokemonImage}
+          src={pokemon.sprites.front_default ?? ''}
+          alt={pokemon.name}
+        />
+      </button>
+      <p className={styles.name}>
+        {uppercasedName} <span className={styles.pokemonId}>#{pokemon.id}</span>
+      </p>
+      <div className={styles.pokemonTypes}>
+        {types.map((type) => (
+          <PokemonType type={type.type} />
+        ))}
+      </div>
+    </div>
   );
 };

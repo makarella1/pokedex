@@ -1,9 +1,13 @@
 .evolution {
-  @apply rounded-lg shadow-lg p-1 border-2;
+  @apply rounded-full shadow-lg p-1 border-2;
+}
+
+.evolutionContainer {
+  @apply flex flex-col justify-center items-center gap-2 mt-4;
 }
 
 .evolutionActive {
-  @apply border-orange-300 border-2;
+  @apply shadow-xl shadow-blue-500/50;
 }
 
 .pokemonImage {
@@ -12,4 +16,12 @@
 
 .name {
   @apply text-center font-semibold;
+}
+
+.pokemonId {
+  @apply font-light text-gray-500;
+}
+
+.pokemonTypes {
+  @apply flex justify-center items-center w-3/4;
 }

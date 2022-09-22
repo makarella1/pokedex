@@ -1,0 +1,19 @@
+.button {
+  @apply bg-inherit font-semibold w-full flex justify-center items-center shadow-lg rounded-lg py-2;
+}
+
+.buttonRed {
+  @apply bg-red-500 shadow-red-500/50 text-white;
+}
+
+.buttonBlue {
+  @apply bg-blue-500 shadow-blue-500/50 text-white;
+}
+
+.buttonOutlinedBlue {
+  @apply border-2 border-blue-500;
+}
+
+.buttonOutlinedRed {
+  @apply border-2 border-red-500;
+}

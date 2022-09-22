@@ -1,8 +1,9 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 import { useGetPokemonQuery, useGetPokemonSpeciesQuery } from '../../api/hooks';
 import { PokemonEvolutionChain, PokemonStat } from '../../components/pokemon';
+import { Button } from '../../components/UI';
 import {
   getLastNumber,
   getPokemonId,
@@ -13,6 +14,7 @@ import styles from './PokemonPage.module.css';
 
 export const PokemonPage: React.FC = () => {
   const { pokemonId } = useParams();
+  const navigate = useNavigate();
 
   const id = +pokemonId!;
 
@@ -74,6 +76,22 @@ export const PokemonPage: React.FC = () => {
             <PokemonStat title="Abilities" stats={pokemonAbilities} />
           </div>
           <PokemonEvolutionChain id={chainId} pokemonName={pokemon.name} />
+          <div className={styles.buttonContainer}>
+            <Button
+              variant="blue"
+              onClick={() => navigate(`/pokemon/${pokemon.id + 1}`)}
+            >
+              See Next Pokemon
+            </Button>
+            {pokemon.id > 1 && (
+              <Button
+                variant="red"
+                onClick={() => navigate(`/pokemon/${pokemon.id - 1}`)}
+              >
+                See Previous Pokemon
+              </Button>
+            )}
+          </div>
         </>
       )}
     </div>

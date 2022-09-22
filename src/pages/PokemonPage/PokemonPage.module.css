@@ -18,3 +18,7 @@
 .contentImage {
   @apply w-52 h-52 mx-auto;
 }
+
+.buttonContainer {
+  @apply flex flex-col gap-2 mt-4;
+}

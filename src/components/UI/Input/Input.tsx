@@ -6,9 +6,11 @@ interface InputProps extends React.ComponentPropsWithRef<'input'> {
   isLoading?: boolean;
 }
 
-export const Input: React.FC<InputProps> = ({ id, placeholder, ...props }) => (
-  <label htmlFor={id}>
-    <span className={styles.label}>{placeholder}</span>
-    <input className={styles.input} id={id} {...props} />
-  </label>
+export const Input: React.FC<InputProps> = React.forwardRef(
+  ({ id, placeholder, ...props }, ref) => (
+    <label htmlFor={id}>
+      <span className={styles.label}>{placeholder}</span>
+      <input className={styles.input} id={id} ref={ref} {...props} />
+    </label>
+  )
 );
