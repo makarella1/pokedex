@@ -1,12 +1,11 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 
-import { Input } from '../../components/UI';
-import {
-  loginWithEmailAndPassword,
-  registerWithEmailAndPassword,
-  User,
-} from '../../firebase';
+import authLogo from '../../assets/img/auth_image.png';
+import { Button, Input } from '../../components/UI';
+import { registerWithEmailAndPassword } from '../../utils/firebase/requests';
+
+import { SignInForm } from './components';
 
 import styles from './AuthPage.module.css';
 
@@ -50,42 +49,9 @@ export const SignUpForm: React.FC = () => {
         disabled={isSubmitting}
       />
       <Input {...register('city')} placeholder="City" disabled={isSubmitting} />
-      <button type="submit">Sign up</button>
-    </form>
-  );
-};
-
-interface SignInValues extends User {
-  password: string;
-  email: User['email'];
-}
-
-export const SignInForm: React.FC = () => {
-  const {
-    handleSubmit,
-    register,
-    formState: { isSubmitting },
-  } = useForm<SignInValues>();
-
-  return (
-    <form
-      className={styles.registerForm}
-      onSubmit={handleSubmit(({ password, ...user }) =>
-        registerWithEmailAndPassword(user, password)
-      )}
-    >
-      <Input
-        {...register('email')}
-        placeholder="Email"
-        disabled={isSubmitting}
-      />
-      <Input
-        {...register('password')}
-        placeholder="Password"
-        type="password"
-        disabled={isSubmitting}
-      />
-      <button type="submit">Sign in</button>
+      <Button variant="red" type="submit">
+        Sign up
+      </Button>
     </form>
   );
 };
@@ -95,11 +61,17 @@ export const AuthPage: React.FC = () => {
 
   return (
     <div className={styles.page}>
+      <img className={styles.authLogo} src={authLogo} alt="Logo" />
+      <h1 className={styles.authTitle}>Login</h1>
       {isSignedUp && <SignInForm />}
       {!isSignedUp && <SignUpForm />}
-      <button onClick={() => setIsSignedUp((prevState) => !prevState)}>
+      <Button
+        variant="outlinedBlue"
+        onClick={() => setIsSignedUp((prevState) => !prevState)}
+        type="button"
+      >
         {!isSignedUp ? 'Already have an account' : 'Sign up'}
-      </button>
+      </Button>
     </div>
   );
 };

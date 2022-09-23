@@ -1,3 +1,10 @@
+interface User {
+  firstName: string;
+  lastName: string;
+  email: string;
+  city: string;
+}
+
 interface NamedAPIResource {
   /** The name of the referenced resource */
   name: string;

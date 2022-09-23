@@ -1,11 +1,15 @@
 .page {
-  @apply flex justify-center items-center h-screen flex-col;
+  @apply flex justify-center h-screen flex-col px-4;
 }
 
 .registerForm {
   @apply flex flex-col gap-2;
 }
 
-.formInput {
-  @apply px-2 py-4 rounded-lg w-full;
+.authLogo {
+  @apply w-24 h-24 mx-auto;
+}
+
+.authTitle {
+  @apply font-bold text-2xl mb-3;
 }

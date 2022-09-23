@@ -21,7 +21,7 @@ export const Button: React.FC<ButtonProps> = ({
       variant === 'blue' && styles.buttonBlue,
       variant === 'red' && styles.buttonRed,
       variant === 'outlinedBlue' && styles.buttonOutlinedBlue,
-      variant === 'outlinedRed' && styles.buttonOulinedRed
+      variant === 'outlinedRed' && styles.buttonOutlinedRed
     )}
     {...props}
   >

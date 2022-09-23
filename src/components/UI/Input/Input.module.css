@@ -1,5 +1,5 @@
 .input {
-  @apply px-2 py-3 rounded-md w-full bg-inherit bg-white;
+  @apply px-2 py-2 rounded-md w-full bg-inherit bg-white;
   @apply focus:outline-none focus:ring-2;
 }
 

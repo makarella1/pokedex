@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { useGetPokemonQuery } from '../../api/hooks';
 import { getPokemonId, transformStatName } from '../../utils/helpers';
 import { PokemonStat, PokemonTypes } from '../pokemon';
+import { Button } from '../UI/Button/Button';
 
 import styles from './PokemonCard.module.css';
 
@@ -62,9 +63,9 @@ export const PokemonCard: React.FC<PokemonCardProps> = ({
         <PokemonStat title="Abilities" stats={pokemonAbilities} />
       </div>
 
-      <button className={styles.openBtn} onClick={openPageHandler}>
+      <Button variant="outlinedBlue" onClick={openPageHandler}>
         Open
-      </button>
+      </Button>
     </div>
   );
 };
