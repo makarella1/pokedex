@@ -1,6 +1,7 @@
 .button,
 .button[type='submit'] {
   @apply bg-inherit font-semibold flex justify-center items-center shadow-lg rounded-lg w-full py-1 mb-2 mx-auto;
+  @apply hover:brightness-90 transition-all duration-300;
 }
 
 .buttonRed,
@@ -15,7 +16,7 @@
 
 .buttonOutlinedBlue,
 .buttonOutlinedBlue[type='submit'] {
-  @apply border-2 border-blue-500;
+  @apply border-2 border-blue-500 bg-neutral-300;
 }
 
 .buttonOutlinedRed,

@@ -1,15 +1,24 @@
 .page {
   @apply flex justify-center h-screen flex-col px-4;
-}
-
-.registerForm {
-  @apply flex flex-col gap-2;
+  @apply sm:flex-row sm:justify-between sm:items-center sm:w-4/5 sm:mx-auto;
+  @apply lg:w-3/5;
+  @apply xl:w-1/2;
 }
 
 .authLogo {
-  @apply w-24 h-24 mx-auto;
+  @apply w-24 h-24 mx-auto mb-10;
+  @apply sm:w-48 sm:h-48 sm:mx-0;
+  @apply xl:w-60 xl:h-60;
 }
 
 .authTitle {
   @apply font-bold text-2xl mb-3;
+  @apply sm:text-3xl sm:mb-6;
+  @apply sm:text-4xl sm:mb-10;
+}
+
+.formContainer {
+  @apply sm:w-72;
+  @apply lg:w-80;
+  @apply xl:w-96;
 }

@@ -1,8 +1,16 @@
 .input {
-  @apply px-2 py-2 rounded-md w-full bg-inherit bg-white;
+  @apply px-2 py-2 rounded-md w-full bg-inherit bg-white mb-1 shadow-md;
   @apply focus:outline-none focus:ring-2;
+}
+
+.inputError {
+  @apply ring-1 ring-red-600 bg-red-100;
 }
 
 .label {
   @apply text-sm font-bold mb-1 inline-block;
+}
+
+.errorText {
+  @apply text-red-600;
 }
