@@ -3,12 +3,12 @@
 }
 
 .nameContainer {
-  @apply flex gap-2 items-end;
+  @apply flex items-end gap-2;
   @apply text-2xl font-bold capitalize;
 }
 
 .number {
-  @apply font-light text-base;
+  @apply text-base font-light;
 }
 
 .content {
@@ -16,9 +16,9 @@
 }
 
 .contentImage {
-  @apply w-52 h-52 mx-auto;
+  @apply mx-auto h-52 w-52;
 }
 
 .buttonContainer {
-  @apply flex flex-col gap-2 mt-4;
+  @apply mt-4 flex flex-col gap-2;
 }

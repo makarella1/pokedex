@@ -1,13 +1,13 @@
-import { nanoid } from 'nanoid';
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { useInView } from 'react-intersection-observer';
+import { nanoid } from "nanoid";
+import React from "react";
+import ReactDOM from "react-dom";
+import { useInView } from "react-intersection-observer";
 
-import { useGetPokemonInfiniteQuery } from '../../api/hooks';
-import { PokemonCard } from '../../components';
-import { getPokemonId } from '../../utils/helpers';
+import { useGetPokemonInfiniteQuery } from "../../api/hooks";
+import { PokemonCard } from "../../components";
+import { getPokemonId } from "../../utils/helpers";
 
-import styles from './PokemonsPage.module.css';
+import styles from "./PokemonsPage.module.css";
 
 export const PokemonsPage: React.FC = () => {
   const { data, isLoading, fetchNextPage, hasNextPage } =
@@ -15,7 +15,7 @@ export const PokemonsPage: React.FC = () => {
 
   const { ref, inView } = useInView();
   const [selectedPokemonId, setSelectedPokemonId] = React.useState<
-    Pokemon['id'] | null
+    Pokemon["id"] | null
   >(null);
 
   React.useEffect(() => {
@@ -25,12 +25,12 @@ export const PokemonsPage: React.FC = () => {
   }, [inView]);
 
   React.useEffect(() => {
-    const overflowOptions = selectedPokemonId !== null ? 'hidden' : 'unset';
+    const overflowOptions = selectedPokemonId !== null ? "hidden" : "unset";
 
-    document.body.setAttribute('style', `overflow:${overflowOptions}`);
+    document.body.setAttribute("style", `overflow:${overflowOptions}`);
 
     return () => {
-      document.body.setAttribute('style', `overflow-y:unset`);
+      document.body.setAttribute("style", `overflow-y:unset`);
     };
   }, [selectedPokemonId]);
 
@@ -60,7 +60,7 @@ export const PokemonsPage: React.FC = () => {
               }}
               role="button"
               onKeyPress={(event) => {
-                if (event.key === 'Enter') {
+                if (event.key === "Enter") {
                   if (pokemonId !== selectedPokemonId) {
                     setSelectedPokemonId(pokemonId);
                   }
@@ -78,7 +78,7 @@ export const PokemonsPage: React.FC = () => {
                     id={pokemonId}
                     onCloseModal={() => setSelectedPokemonId(null)}
                   />,
-                  document.querySelector('#modal') as HTMLDivElement
+                  document.querySelector("#modal") as HTMLDivElement
                 )}
             </div>
           );

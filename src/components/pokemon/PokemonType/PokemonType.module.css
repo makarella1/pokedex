@@ -1,5 +1,5 @@
 .type {
-  @apply mr-1 px-1 text-sm py-1 font-semibold bg-inherit rounded-2xl border-2 shadow-md;
+  @apply mr-1 rounded-2xl border-2 bg-inherit px-1 py-1 text-sm font-semibold shadow-md;
 }
 
 .grass {

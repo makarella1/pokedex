@@ -1,11 +1,11 @@
-import React from 'react';
+import React from "react";
 
-import authLogo from '../../assets/img/auth_image.png';
-import { Button } from '../../components/UI';
+import authLogo from "../../assets/img/auth_image.png";
+import { Button } from "../../components/UI";
 
-import { SignInForm, SignUpForm } from './components';
+import { SignInForm, SignUpForm } from "./components";
 
-import styles from './AuthPage.module.css';
+import styles from "./AuthPage.module.css";
 
 export const AuthPage: React.FC = () => {
   const [isSignedUp, setIsSignedUp] = React.useState(false);
@@ -18,11 +18,11 @@ export const AuthPage: React.FC = () => {
         {isSignedUp && <SignInForm />}
         {!isSignedUp && <SignUpForm />}
         <Button
-          variant="outlinedBlue"
+          variant="plain"
           onClick={() => setIsSignedUp((prevState) => !prevState)}
           type="button"
         >
-          {!isSignedUp ? 'Already have an account' : 'Create new account'}
+          {!isSignedUp ? "Already have an account" : "Create new account"}
         </Button>
       </div>
     </div>

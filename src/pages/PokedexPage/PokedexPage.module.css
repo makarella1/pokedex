@@ -7,10 +7,10 @@
 }
 
 .pokemonItem {
-  @apply flex bg-zinc-500 mb-4 justify-center items-center overflow-hidden 
-  py-2 px-4 rounded-tl-full rounded-bl-full cursor-pointer;
-  @apply text-white capitalize font-bold;
-  @apply transition-all duration-300 hover:bg-black hover:scale-110;
+  @apply mb-4 flex cursor-pointer items-center justify-center overflow-hidden 
+  rounded-tl-full rounded-bl-full bg-zinc-500 py-2 px-4;
+  @apply font-bold capitalize text-white;
+  @apply transition-all duration-300 hover:scale-110 hover:bg-black;
 }
 
 .pokemonItem:hover .pokemonImage {
@@ -18,7 +18,7 @@
 }
 
 .pokemonItemActive {
-  @apply bg-pink-700 scale-110;
+  @apply scale-110 bg-pink-700;
 }
 
 .pokemonItemActive .pokemonImage {
@@ -26,27 +26,27 @@
 }
 
 .pokemonImage {
-  @apply w-20 h-20 mr-2 transition-transform duration-300;
+  @apply mr-2 h-20 w-20 transition-transform duration-300;
 }
 
 .pokemonImageContainer {
-  @apply w-20 h-20 rounded-full overflow-hidden;
+  @apply h-20 w-20 overflow-hidden rounded-full;
 }
 
 .card {
-  @apply flex flex-col shadow-xl rounded-xl p-10 mr-10;
+  @apply mr-10 flex flex-col rounded-xl p-10 shadow-xl;
 }
 
 .card img {
-  @apply w-80 h-80;
+  @apply h-80 w-80;
 }
 
 .cardTitle {
-  @apply flex justify-between items-center;
+  @apply flex items-center justify-between;
 }
 
 .cardName {
-  @apply text-2xl capitalize font-bold;
+  @apply text-2xl font-bold capitalize;
 }
 
 .cardId {
@@ -62,13 +62,13 @@
 }
 
 .cardStatItem {
-  @apply border-b border-black pb-1 mb-2;
+  @apply mb-2 border-b border-black pb-1;
 }
 
 .cardTypes {
-  @apply flex mt-2;
+  @apply mt-2 flex;
 }
 
 .cardType {
-  @apply mr-1 px-2 py-1 text-white font-semibold bg-green-400 rounded-2xl;
+  @apply mr-1 rounded-2xl bg-green-400 px-2 py-1 font-semibold text-white;
 }

@@ -1,5 +1,5 @@
 .nav {
-  @apply shadow px-4 py-4 flex justify-between sticky top-0 items-center z-20 bg-white w-full lg:px-20 sm:px-10;
+  @apply sticky top-0 z-20 flex w-full items-center justify-between bg-white px-4 py-4 shadow sm:px-10 lg:px-20;
 }
 
 .logoContainer {
@@ -7,11 +7,11 @@
 }
 
 .logo {
-  @apply w-36 h-14 mr-10;
+  @apply mr-10 h-14 w-36;
 }
 
 .title {
-  @apply font-bold text-xl hidden md:block;
+  @apply hidden text-xl font-bold md:block;
 }
 
 .navLinks {

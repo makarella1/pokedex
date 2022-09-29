@@ -1,20 +1,20 @@
 .page {
-  @apply flex justify-center h-screen flex-col px-4;
-  @apply sm:flex-row sm:justify-between sm:items-center sm:w-4/5 sm:mx-auto;
+  @apply flex h-screen flex-col justify-center px-4;
+  @apply sm:mx-auto sm:w-4/5 sm:flex-row sm:items-center sm:justify-between;
   @apply lg:w-3/5;
   @apply xl:w-1/2;
 }
 
 .authLogo {
-  @apply w-24 h-24 mx-auto mb-10;
-  @apply sm:w-48 sm:h-48 sm:mx-0;
-  @apply xl:w-60 xl:h-60;
+  @apply mx-auto mb-8 h-24 w-24;
+  @apply sm:mx-0 sm:h-48 sm:w-48;
+  @apply xl:h-60 xl:w-60;
 }
 
 .authTitle {
-  @apply font-bold text-2xl mb-3;
-  @apply sm:text-3xl sm:mb-6;
-  @apply sm:text-4xl sm:mb-10;
+  @apply mb-3 text-2xl font-bold;
+  @apply sm:mb-6 sm:text-3xl;
+  @apply sm:mb-10 sm:text-4xl;
 }
 
 .formContainer {

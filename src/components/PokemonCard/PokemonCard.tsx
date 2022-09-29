@@ -1,15 +1,15 @@
-import { IoMdClose } from 'react-icons/io';
-import { useNavigate } from 'react-router-dom';
+import { IoMdClose } from "react-icons/io";
+import { useNavigate } from "react-router-dom";
 
-import { useGetPokemonQuery } from '../../api/hooks';
-import { getPokemonId, transformStatName } from '../../utils/helpers';
-import { PokemonStat, PokemonTypes } from '../pokemon';
-import { Button } from '../UI/Button/Button';
+import { useGetPokemonQuery } from "../../api/hooks";
+import { getPokemonId, transformStatName } from "../../utils/helpers";
+import { PokemonStat, PokemonTypes } from "../pokemon";
+import { Button } from "../UI/Button/Button";
 
-import styles from './PokemonCard.module.css';
+import styles from "./PokemonCard.module.css";
 
 interface PokemonCardProps {
-  id: Pokemon['id'];
+  id: Pokemon["id"];
   onCloseModal: () => void;
 }
 
@@ -54,7 +54,7 @@ export const PokemonCard: React.FC<PokemonCardProps> = ({
         </button>
       </div>
 
-      <img src={pokemon.sprites.front_default ?? ''} alt={pokemon.name} />
+      <img src={pokemon.sprites.front_default ?? ""} alt={pokemon.name} />
 
       <PokemonTypes types={pokemon.types} />
 
@@ -63,7 +63,7 @@ export const PokemonCard: React.FC<PokemonCardProps> = ({
         <PokemonStat title="Abilities" stats={pokemonAbilities} />
       </div>
 
-      <Button variant="outlinedBlue" onClick={openPageHandler}>
+      <Button variant="blue" onClick={openPageHandler}>
         Open
       </Button>
     </div>

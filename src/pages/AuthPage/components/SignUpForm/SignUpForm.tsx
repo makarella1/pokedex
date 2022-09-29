@@ -1,23 +1,54 @@
-import { useForm } from 'react-hook-form';
+import { FirebaseError } from "firebase/app";
+import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 
-import { Button, Input } from '../../../../components/UI';
-import { useRegisterWithEmailAndPasswordMutation } from '../../../../utils/firebase/hooks';
+import { Button, Input } from "../../../../components/UI";
+import { ROUTES } from "../../../../utils/constants";
+import { useRegisterWithEmailAndPasswordMutation } from "../../../../utils/firebase/hooks";
+import { getEmailRegExp } from "../../../../utils/helpers";
 
-import styles from './SignUpForm.module.css';
+import styles from "./SignUpForm.module.css";
 
 interface SignUpValues extends User {
   password: string;
 }
 
 export const SignUpForm: React.FC = () => {
-  const { mutate: registerWithEmailAndPassword } =
-    useRegisterWithEmailAndPasswordMutation();
+  const navigate = useNavigate();
 
   const {
     handleSubmit,
     register,
-    formState: { isSubmitting },
+    setError,
+    formState: { isSubmitting, errors },
   } = useForm<SignUpValues>();
+
+  const { mutate: registerWithEmailAndPassword, isLoading } =
+    useRegisterWithEmailAndPasswordMutation({
+      options: {
+        onSuccess: () => navigate(`${ROUTES.POKEMONS}`),
+        onError: (error: FirebaseError) => {
+          switch (error.code) {
+            case "auth/email-already-in-use":
+              setError(
+                "email",
+                { message: "Email already in use!" },
+                { shouldFocus: true }
+              );
+              break;
+            default:
+              setError(
+                "email",
+                { message: "Something went wrong..." },
+                { shouldFocus: true }
+              );
+              break;
+          }
+        },
+      },
+    });
+
+  const isDisabled = isLoading || isSubmitting;
 
   return (
     <form
@@ -27,27 +58,44 @@ export const SignUpForm: React.FC = () => {
       )}
     >
       <Input
-        {...register('firstName')}
-        placeholder="First name"
-        disabled={isSubmitting}
+        {...register("name", {
+          required: "What's your name?",
+          minLength: {
+            value: 2,
+            message: "Name should be at least 2 characters!",
+          },
+        })}
+        placeholder="Name"
+        disabled={isDisabled}
+        error={errors.name?.message}
       />
       <Input
-        {...register('lastName')}
-        placeholder="Last name"
-        disabled={isSubmitting}
-      />
-      <Input
-        {...register('email')}
+        {...register("email", {
+          required: "Email is required!",
+          pattern: { value: getEmailRegExp(), message: "Email's not valid" },
+        })}
         placeholder="Email"
-        disabled={isSubmitting}
+        disabled={isDisabled}
+        error={errors.email?.message}
       />
       <Input
-        {...register('password')}
+        {...register("password", {
+          required: "Password should be at least 6 characters!",
+        })}
         placeholder="Password"
         type="password"
-        disabled={isSubmitting}
+        disabled={isDisabled}
+        error={errors.password?.message}
       />
-      <Input {...register('city')} placeholder="City" disabled={isSubmitting} />
+      <Input
+        {...register("city", {
+          required: "Pass your city!",
+          minLength: { value: 2, message: "Pass at least 2 characters!" },
+        })}
+        placeholder="City"
+        disabled={isDisabled}
+        error={errors.city?.message}
+      />
       <Button variant="red" type="submit">
         Sign up
       </Button>

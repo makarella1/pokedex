@@ -1,32 +1,67 @@
-import { useForm } from 'react-hook-form';
+import { FirebaseError } from "firebase/app";
+import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 
-import { Button, Input } from '../../../../components/UI';
-import { useLoginWithEmailAndPasswordMutation } from '../../../../utils/firebase/hooks';
-import { getEmailRegExp } from '../../../../utils/helpers';
+import { Button, Input } from "../../../../components/UI";
+import { ROUTES } from "../../../../utils/constants";
+import { useStore } from "../../../../utils/contexts";
+import { useLoginWithEmailAndPasswordMutation } from "../../../../utils/firebase/hooks";
+import { getEmailRegExp } from "../../../../utils/helpers";
 
-import styles from './SignInForm.module.css';
+import styles from "./SignInForm.module.css";
 
 interface SignInValues extends User {
   password: string;
-  email: User['email'];
+  email: User["email"];
 }
 
 export const SignInForm: React.FC = () => {
-  const { mutate: loginWithEmailAndPassword, isLoading } =
-    useLoginWithEmailAndPasswordMutation({
-      options: {
-        onSuccess: (data) => console.log('data', data),
-        onError: (data) => console.log('data', data),
-      },
-    });
+  const navigate = useNavigate();
+  const { setStore } = useStore();
 
   const {
     handleSubmit,
     register,
+    setError,
     formState: { isSubmitting, errors },
   } = useForm<SignInValues>();
 
-  console.log(isLoading, isLoading);
+  const { mutate: loginWithEmailAndPassword, isLoading } =
+    useLoginWithEmailAndPasswordMutation({
+      options: {
+        onSuccess: () => {
+          navigate(`${ROUTES.POKEMONS}`);
+          setStore({ session: { isLoggedIn: true } });
+        },
+        onError: (error: FirebaseError) => {
+          switch (error.code) {
+            case "auth/user-not-found":
+              setError(
+                "email",
+                { message: "Wrong credentials!" },
+                { shouldFocus: true }
+              );
+              break;
+            case "auth/wrong-password":
+              setError(
+                "email",
+                { message: "Wrong credentials!" },
+                { shouldFocus: true }
+              );
+              break;
+            default:
+              setError(
+                "email",
+                { message: "Something went wrong..." },
+                { shouldFocus: true }
+              );
+              break;
+          }
+        },
+      },
+    });
+
+  const isDisabled = isLoading && isSubmitting;
 
   return (
     <form
@@ -36,29 +71,29 @@ export const SignInForm: React.FC = () => {
       )}
     >
       <Input
-        {...register('email', {
-          required: 'Field is required!',
+        {...register("email", {
+          required: "Field is required!",
           pattern: { value: getEmailRegExp(), message: "Email isn't valid!" },
         })}
         placeholder="Email"
-        disabled={isSubmitting}
+        disabled={isDisabled}
         error={errors.email?.message}
       />
       <Input
-        {...register('password', {
-          required: 'Field is required!',
+        {...register("password", {
+          required: "Field is required!",
           minLength: {
             value: 6,
-            message: 'Password is at least 6 characters!',
+            message: "Password is at least 6 characters!",
           },
         })}
         placeholder="Password"
         type="password"
-        disabled={isSubmitting}
+        disabled={isDisabled}
         error={errors.password?.message}
       />
       <Button variant="blue" type="submit">
-        Sign in
+        GO!
       </Button>
     </form>
   );

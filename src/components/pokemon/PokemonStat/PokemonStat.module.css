@@ -3,5 +3,5 @@
 }
 
 .pokemonCardStat {
-  @apply border-b border-gray-300 pb-1 mb-2;
+  @apply mb-2 border-b border-gray-300 pb-1;
 }

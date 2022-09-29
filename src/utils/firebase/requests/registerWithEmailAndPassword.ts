@@ -1,23 +1,21 @@
-import { createUserWithEmailAndPassword } from 'firebase/auth';
-import { addDoc, collection } from 'firebase/firestore';
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { addDoc, collection } from "firebase/firestore";
 
-import { auth, db } from '../../../firebase';
+import { auth, db } from "../../../firebase";
 
 export const registerWithEmailAndPassword = async (
   user: User,
   password: string
 ) => {
-  const { user: userData } = await createUserWithEmailAndPassword(
+  const { user: newUser } = await createUserWithEmailAndPassword(
     auth,
     user.email,
     password
   );
 
-  const newUser = { ...userData };
+  updateProfile(newUser, { displayName: `${user.name}` });
 
-  newUser.displayName = `${user.firstName} ${user.lastName}`;
-
-  await addDoc(collection(db, 'users'), {
-    ...newUser,
+  await addDoc(collection(db, "users"), {
+    ...user,
   });
 };
