@@ -1,3 +1,4 @@
+export * from "./useAddDocumentMutation";
 export * from "./useGetEvolutionChainQuery";
 export * from "./useGetPokemonInfiniteQuery";
 export * from "./useGetPokemonQuery";

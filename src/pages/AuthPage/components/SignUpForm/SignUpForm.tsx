@@ -26,7 +26,7 @@ export const SignUpForm: React.FC = () => {
   const { mutate: registerWithEmailAndPassword, isLoading } =
     useRegisterWithEmailAndPasswordMutation({
       options: {
-        onSuccess: () => navigate(`${ROUTES.POKEMONS}`),
+        onSuccess: () => navigate(ROUTES.POKEMONS),
         onError: (error: FirebaseError) => {
           switch (error.code) {
             case "auth/email-already-in-use":
@@ -86,15 +86,6 @@ export const SignUpForm: React.FC = () => {
         type="password"
         disabled={isDisabled}
         error={errors.password?.message}
-      />
-      <Input
-        {...register("city", {
-          required: "Pass your city!",
-          minLength: { value: 2, message: "Pass at least 2 characters!" },
-        })}
-        placeholder="City"
-        disabled={isDisabled}
-        error={errors.city?.message}
       />
       <Button variant="red" type="submit">
         Sign up

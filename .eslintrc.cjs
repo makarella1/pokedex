@@ -22,11 +22,13 @@ module.exports = {
     ecmaVersion: "latest",
     sourceType: "module",
     project: ["./tsconfig.json"],
+    extraFileExtensions: [".cjs"],
   },
   ignorePatterns: [
     "tailwind.config.cjs",
     "postcss.config.cjs",
     "prettier.config.cjs",
+    "vite.config.ts",
   ],
   plugins: ["react", "@typescript-eslint", "prettier", "simple-import-sort"],
   rules: {

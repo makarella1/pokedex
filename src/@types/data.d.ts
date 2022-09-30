@@ -1,7 +1,20 @@
 interface User {
-  name: string;
-  email: string;
-  city: string;
+  displayName: Include<import("firebase/auth").User["displayName"], string>;
+  email: Include<import("firebase/auth").User["email"], string>;
+  uid: Include<import("firebase/auth").User["uid"], string>;
+  pokemons: {
+    name: Pokemon["name"];
+    id: Pokemon["id"];
+    image: Pokemon["sprites"]["front_default"];
+  }[];
+}
+
+type Collection = "pokemons";
+
+interface PokemonDocument {
+  name: Pokemon["name"];
+  id: Pokemon["id"];
+  user: User["uid"];
 }
 
 interface NamedAPIResource {

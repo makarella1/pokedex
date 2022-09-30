@@ -1,9 +1,9 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 
-import pokemonLogo from '../../../assets/img/pokemon_logo.png';
+import pokemonLogo from "../../../assets/img/pokemon_logo.png";
 
-import styles from './Navbar.module.css';
+import styles from "./Navbar.module.css";
 
 export const Navbar: React.FC = () => (
   <nav className={styles.nav}>
@@ -13,10 +13,13 @@ export const Navbar: React.FC = () => (
     </div>
     <ul className={styles.navLinks}>
       <li className={styles.navLink}>
+        <li className={styles.navLink}>
+          <Link to="/">Pokemons</Link>
+        </li>
         <Link to="/pokedex">Pokedex</Link>
       </li>
       <li className={styles.navLink}>
-        <Link to="/">Pokemons</Link>
+        <Link to="/profile">Profile</Link>
       </li>
     </ul>
   </nav>

@@ -3,8 +3,15 @@ import { Navigate, Route, Routes } from "react-router-dom";
 
 import { Layout } from "./components/layout";
 import { ROUTES } from "./utils/constants";
-import { useStore } from "./utils/contexts";
-import { AuthPage, PokedexPage, PokemonPage, PokemonsPage } from "./pages";
+import { useAuthState } from "./utils/firebase/hooks";
+import { Loader } from "./components";
+import {
+  AuthPage,
+  PokedexPage,
+  PokemonPage,
+  PokemonsPage,
+  ProfilePage,
+} from "./pages";
 
 export const Auth = () => (
   <Routes>
@@ -14,30 +21,26 @@ export const Auth = () => (
 );
 
 const App: React.FC = () => {
-  const {
-    session: { isLoggedIn },
-    setStore,
-  } = useStore();
+  const { data: user, isLoading } = useAuthState();
+
+  if (isLoading) {
+    return <Loader />;
+  }
 
   return (
     <>
-      {!isLoggedIn && <Auth />}
-      {isLoggedIn && (
+      {!user && <Auth />}
+      {user && (
         <Routes>
           <Route element={<Layout />}>
             <Route path={ROUTES.POKEMONS} element={<PokemonsPage />} />
             <Route path={ROUTES.POKEDEX} element={<PokedexPage />} />
             <Route path={ROUTES.POKEMON} element={<PokemonPage />} />
+            <Route path={ROUTES.PROFILE} element={<ProfilePage />} />
           </Route>
         </Routes>
       )}
-      <button
-        onClick={() => setStore({ session: { isLoggedIn: !isLoggedIn } })}
-      >
-        Change login state
-      </button>
     </>
   );
 };
-
 export default App;

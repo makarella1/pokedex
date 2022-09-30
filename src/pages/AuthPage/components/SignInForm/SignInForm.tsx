@@ -30,7 +30,7 @@ export const SignInForm: React.FC = () => {
     useLoginWithEmailAndPasswordMutation({
       options: {
         onSuccess: () => {
-          navigate(`${ROUTES.POKEMONS}`);
+          navigate(ROUTES.POKEMONS);
           setStore({ session: { isLoggedIn: true } });
         },
         onError: (error: FirebaseError) => {

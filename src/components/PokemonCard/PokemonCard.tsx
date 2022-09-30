@@ -1,7 +1,8 @@
 import { IoMdClose } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
 
-import { useGetPokemonQuery } from "../../api/hooks";
+import { useAddDocumentMutation, useGetPokemonQuery } from "../../api/hooks";
+import { useAuthState } from "../../utils/firebase/hooks";
 import { getPokemonId, transformStatName } from "../../utils/helpers";
 import { PokemonStat, PokemonTypes } from "../pokemon";
 import { Button } from "../UI/Button/Button";
@@ -20,6 +21,11 @@ export const PokemonCard: React.FC<PokemonCardProps> = ({
   const navigate = useNavigate();
 
   const { data, isLoading } = useGetPokemonQuery({ option: id });
+  const { data: user } = useAuthState();
+
+  const addPokemon = useAddDocumentMutation({
+    options: { onSuccess: () => onCloseModal() },
+  });
 
   if (isLoading || !data) {
     return null;
@@ -63,6 +69,17 @@ export const PokemonCard: React.FC<PokemonCardProps> = ({
         <PokemonStat title="Abilities" stats={pokemonAbilities} />
       </div>
 
+      <Button
+        variant="red"
+        onClick={() =>
+          addPokemon.mutate({
+            collection: "pokemons",
+            document: { name: pokemon.name, id: pokemon.id, user: user?.uid },
+          })
+        }
+      >
+        Add to my team
+      </Button>
       <Button variant="blue" onClick={openPageHandler}>
         Open
       </Button>
