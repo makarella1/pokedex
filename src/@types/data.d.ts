@@ -1,7 +1,10 @@
 interface User {
+  city?: string;
   displayName: Include<import("firebase/auth").User["displayName"], string>;
   email: Include<import("firebase/auth").User["email"], string>;
-  uid: Include<import("firebase/auth").User["uid"], string>;
+  phoneNumber: import("firebase/auth").User["phoneNumber"];
+  photoURL: import("firebase/auth").User["photoURL"];
+  uid: import("firebase/auth").User["uid"];
   pokemons: {
     name: Pokemon["name"];
     id: Pokemon["id"];
@@ -9,7 +12,7 @@ interface User {
   }[];
 }
 
-type Collection = "pokemons";
+interface UserDocument extends User {}
 
 interface PokemonDocument {
   name: Pokemon["name"];

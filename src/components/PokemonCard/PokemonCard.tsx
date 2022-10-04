@@ -1,8 +1,11 @@
 import { IoMdClose } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
 
-import { useAddDocumentMutation, useGetPokemonQuery } from "../../api/hooks";
-import { useAuthState } from "../../utils/firebase/hooks";
+import { useGetPokemonQuery } from "../../api/hooks";
+import {
+  useAuthState,
+  useUpdateDocumentMutation,
+} from "../../utils/firebase/hooks";
 import { getPokemonId, transformStatName } from "../../utils/helpers";
 import { PokemonStat, PokemonTypes } from "../pokemon";
 import { Button } from "../UI/Button/Button";
@@ -23,11 +26,11 @@ export const PokemonCard: React.FC<PokemonCardProps> = ({
   const { data, isLoading } = useGetPokemonQuery({ option: id });
   const { data: user } = useAuthState();
 
-  const addPokemon = useAddDocumentMutation({
+  const addPokemon = useUpdateDocumentMutation({
     options: { onSuccess: () => onCloseModal() },
   });
 
-  if (isLoading || !data) {
+  if (isLoading || !data || !user) {
     return null;
   }
 
@@ -69,17 +72,30 @@ export const PokemonCard: React.FC<PokemonCardProps> = ({
         <PokemonStat title="Abilities" stats={pokemonAbilities} />
       </div>
 
-      <Button
-        variant="red"
-        onClick={() =>
-          addPokemon.mutate({
-            collection: "pokemons",
-            document: { name: pokemon.name, id: pokemon.id, user: user?.uid },
-          })
-        }
-      >
-        Add to my team
-      </Button>
+      {user.pokemons.length < 7 && (
+        <Button
+          variant="red"
+          onClick={() =>
+            addPokemon.mutate({
+              collection: "users",
+              data: {
+                ...user,
+                pokemons: [
+                  ...user.pokemons,
+                  {
+                    id: pokemon.id,
+                    name: pokemon.name,
+                    image: pokemon.sprites.front_default,
+                  },
+                ],
+              },
+              id: user.uid,
+            })
+          }
+        >
+          Add to my team
+        </Button>
+      )}
       <Button variant="blue" onClick={openPageHandler}>
         Open
       </Button>

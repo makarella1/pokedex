@@ -1,11 +1,11 @@
 import { nanoid } from "nanoid";
 import React from "react";
 import ReactDOM from "react-dom";
-import { useInView } from "react-intersection-observer";
 
 import { useGetPokemonInfiniteQuery } from "../../api/hooks";
 import { PokemonCard } from "../../components";
 import { getPokemonId } from "../../utils/helpers";
+import { useInView } from "../../utils/hooks";
 
 import styles from "./PokemonsPage.module.css";
 
@@ -13,16 +13,16 @@ export const PokemonsPage: React.FC = () => {
   const { data, isLoading, fetchNextPage, hasNextPage } =
     useGetPokemonInfiniteQuery();
 
-  const { ref, inView } = useInView();
+  const { ref, isInView } = useInView();
   const [selectedPokemonId, setSelectedPokemonId] = React.useState<
     Pokemon["id"] | null
   >(null);
 
   React.useEffect(() => {
-    if (inView && hasNextPage) {
+    if (isInView && hasNextPage) {
       fetchNextPage();
     }
-  }, [inView]);
+  }, [isInView]);
 
   React.useEffect(() => {
     const overflowOptions = selectedPokemonId !== null ? "hidden" : "unset";

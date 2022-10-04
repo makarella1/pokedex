@@ -1,16 +1,16 @@
-import { nanoid } from 'nanoid';
-import React from 'react';
+import { nanoid } from "nanoid";
+import React from "react";
 
-import { useGetEvolutionChain } from '../../../api/hooks';
-import { getEvolutionChain } from '../../../utils/helpers';
+import { useGetEvolutionChain } from "../../../api/hooks";
+import { getEvolutionChain } from "../../../utils/helpers";
 
-import { PokemonEvolutionChainItem } from './PokemonEvolutionChainItem/PokemonEvolutionChainItem';
+import { PokemonEvolutionChainItem } from "./PokemonEvolutionChainItem/PokemonEvolutionChainItem";
 
-import styles from './PokemonEvolutionChain.module.css';
+import styles from "./PokemonEvolutionChain.module.css";
 
 interface PokemonEvolutionChainProps {
   id: number;
-  pokemonName: Pokemon['name'];
+  pokemonName: Pokemon["name"];
 }
 
 export const PokemonEvolutionChain: React.FC<PokemonEvolutionChainProps> = ({

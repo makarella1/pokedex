@@ -1,5 +1,5 @@
 .pokemonCard {
-  @apply fixed z-30 flex cursor-default flex-col justify-between bg-white p-6;
+  @apply fixed z-30 flex cursor-default flex-col justify-between overflow-scroll bg-white p-6;
   @apply h-screen w-screen;
 
   @apply sm:left-1/2 sm:top-1/2 sm:h-1/2 sm:w-1/2 sm:-translate-x-1/2 sm:-translate-y-1/2 sm:overflow-y-scroll sm:rounded-xl;

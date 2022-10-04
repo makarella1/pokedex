@@ -1,7 +1,8 @@
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
-import { addDoc, collection } from "firebase/firestore";
 
-import { auth, db } from "../config";
+import { auth } from "../config";
+
+import { addDocument } from "./addDocument";
 
 export const registerWithEmailAndPassword = async (
   user: User,
@@ -15,9 +16,9 @@ export const registerWithEmailAndPassword = async (
 
   updateProfile(newUser, { displayName: `${user.displayName}` });
 
-  await addDoc(collection(db, "users"), {
-    uid: newUser.uid,
-    displayName: newUser.displayName,
-    email: newUser.email,
-  });
+  addDocument(
+    "users",
+    { ...newUser, uid: newUser.uid, pokemons: [] },
+    newUser.uid
+  );
 };

@@ -1,6 +1,7 @@
 import { useMutation } from "@tanstack/react-query";
 
-import { addDocument } from "../../utils/firebase/requests";
+import { Collection } from "../config";
+import { addDocument } from "../requests";
 
 interface UseAddDocumentMutationParams {
   document: PokemonDocument;

@@ -1,7 +1,9 @@
 import { signInWithPopup } from "firebase/auth";
-import { addDoc, collection, getDocs, query, where } from "firebase/firestore";
+import { collection, getDocs, query, where } from "firebase/firestore";
 
 import { auth, db, googleProvider } from "../config";
+
+import { addDocument } from "./addDocument";
 
 export const authWithGoogle = async () => {
   const { user } = await signInWithPopup(auth, googleProvider);
@@ -11,11 +13,16 @@ export const authWithGoogle = async () => {
   const docs = await getDocs(q);
 
   if (docs.docs.length === 0) {
-    await addDoc(collection(db, "users"), {
-      uid: user.uid,
-      displayName: user.displayName,
-      email: user.email,
-    });
+    addDocument(
+      "users",
+      {
+        email: user.email,
+        displayName: user.displayName,
+        pokemons: [],
+        uid: user.uid,
+      },
+      user.uid
+    );
   }
 
   return user;

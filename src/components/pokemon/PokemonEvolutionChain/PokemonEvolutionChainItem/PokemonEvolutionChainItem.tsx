@@ -1,16 +1,17 @@
-import { clsx } from 'clsx';
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { clsx } from "clsx";
+import { nanoid } from "nanoid";
+import React from "react";
+import { useNavigate } from "react-router-dom";
 
-import { useGetPokemonQuery } from '../../../../api/hooks';
-import { transformStatName } from '../../../../utils/helpers';
-import { PokemonType } from '../../PokemonType/PokemonType';
+import { useGetPokemonQuery } from "../../../../api/hooks";
+import { transformStatName } from "../../../../utils/helpers";
+import { PokemonType } from "../../PokemonType/PokemonType";
 
-import styles from './PokemonEvolutionChainItem.module.css';
+import styles from "./PokemonEvolutionChainItem.module.css";
 
 interface PokemonEvolutionChainItemProps {
-  name: Pokemon['name'];
-  isActive: boolean;
+  name: Pokemon["name"];
+  isActive?: boolean;
 }
 
 export const PokemonEvolutionChainItem: React.FC<
@@ -41,7 +42,7 @@ export const PokemonEvolutionChainItem: React.FC<
       >
         <img
           className={styles.pokemonImage}
-          src={pokemon.sprites.front_default ?? ''}
+          src={pokemon.sprites.front_default ?? ""}
           alt={pokemon.name}
         />
       </button>
@@ -50,7 +51,7 @@ export const PokemonEvolutionChainItem: React.FC<
       </p>
       <div className={styles.pokemonTypes}>
         {types.map((type) => (
-          <PokemonType type={type.type} />
+          <PokemonType type={type.type} key={nanoid()} />
         ))}
       </div>
     </div>

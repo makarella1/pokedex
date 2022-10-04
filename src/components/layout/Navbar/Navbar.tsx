@@ -13,9 +13,9 @@ export const Navbar: React.FC = () => (
     </div>
     <ul className={styles.navLinks}>
       <li className={styles.navLink}>
-        <li className={styles.navLink}>
-          <Link to="/">Pokemons</Link>
-        </li>
+        <Link to="/">Pokemons</Link>
+      </li>
+      <li className={styles.navLink}>
         <Link to="/pokedex">Pokedex</Link>
       </li>
       <li className={styles.navLink}>
