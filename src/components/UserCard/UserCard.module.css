@@ -1,0 +1,23 @@
+.profileCard {
+  @apply flex w-full flex-col gap-5 rounded-xl bg-white p-4 shadow-lg;
+}
+
+.cardBody {
+  @apply flex items-center justify-between;
+}
+
+.profileInfo {
+  @apply flex flex-col justify-between overflow-hidden;
+}
+
+.profileImage {
+  @apply mx-auto mr-5 h-20 w-20;
+}
+
+.profileId {
+  @apply mb-2 truncate font-semibold;
+}
+
+.profileName {
+  @apply text-lg;
+}

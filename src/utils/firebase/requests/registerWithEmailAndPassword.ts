@@ -18,7 +18,7 @@ export const registerWithEmailAndPassword = async (
 
   addDocument(
     "users",
-    { ...newUser, uid: newUser.uid, pokemons: [] },
+    { ...user, uid: newUser.uid, pokemons: [] },
     newUser.uid
   );
 };

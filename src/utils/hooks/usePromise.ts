@@ -12,9 +12,9 @@ export const usePromise = <T>() => {
     setError,
     isError: !!error,
     data,
-    setData: (data: T) => {
+    setData: (promiseData: T) => {
       setIsLoading(false);
-      setData(data);
+      setData(promiseData);
     },
   };
 };
