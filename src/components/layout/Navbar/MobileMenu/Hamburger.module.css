@@ -1,0 +1,19 @@
+.hamburger {
+  @apply z-50 block sm:hidden;
+}
+
+.line {
+  @apply my-1 block h-1 w-8 bg-slate-500 transition-all duration-200;
+}
+
+.lineActive:nth-child(1) {
+  @apply translate-y-[200%] -rotate-45;
+}
+
+.lineActive:nth-child(2) {
+  @apply translate-x-4 opacity-0;
+}
+
+.lineActive:nth-child(3) {
+  @apply -translate-y-[200%] rotate-45;
+}

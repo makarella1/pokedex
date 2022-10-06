@@ -3,6 +3,7 @@ import { FcGoogle } from "react-icons/fc";
 import { useNavigate } from "react-router-dom";
 
 import authLogo from "../../assets/img/auth_image.png";
+import { PageLayout } from "../../components";
 import { Button } from "../../components/UI";
 import { ROUTES } from "../../utils/constants";
 import { useStore } from "../../utils/contexts";
@@ -28,7 +29,7 @@ export const AuthPage: React.FC = () => {
   });
 
   return (
-    <div className={styles.page}>
+    <PageLayout>
       <img className={styles.authLogo} src={authLogo} alt="Logo" />
       <div className={styles.formContainer}>
         <h1 className={styles.authTitle}>Login</h1>
@@ -46,6 +47,6 @@ export const AuthPage: React.FC = () => {
           {!isSignedUp ? "Already have an account" : "Create new account"}
         </Button>
       </div>
-    </div>
+    </PageLayout>
   );
 };

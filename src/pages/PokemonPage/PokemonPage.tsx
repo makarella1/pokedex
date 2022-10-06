@@ -1,16 +1,17 @@
-import React from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import React from "react";
+import { useNavigate, useParams } from "react-router-dom";
 
-import { useGetPokemonQuery, useGetPokemonSpeciesQuery } from '../../api/hooks';
-import { PokemonEvolutionChain, PokemonStat } from '../../components/pokemon';
-import { Button } from '../../components/UI';
+import { useGetPokemonQuery, useGetPokemonSpeciesQuery } from "../../api/hooks";
+import { PageLayout } from "../../components";
+import { PokemonEvolutionChain, PokemonStat } from "../../components/pokemon";
+import { Button } from "../../components/UI";
 import {
   getLastNumber,
   getPokemonId,
   transformStatName,
-} from '../../utils/helpers';
+} from "../../utils/helpers";
 
-import styles from './PokemonPage.module.css';
+import styles from "./PokemonPage.module.css";
 
 export const PokemonPage: React.FC = () => {
   const { pokemonId } = useParams();
@@ -57,7 +58,7 @@ export const PokemonPage: React.FC = () => {
   );
 
   return (
-    <div className={styles.page}>
+    <PageLayout>
       {isData && (
         <>
           <div className={styles.nameContainer}>
@@ -69,7 +70,7 @@ export const PokemonPage: React.FC = () => {
           <div className={styles.content}>
             <img
               className={styles.contentImage}
-              src={pokemon.sprites.front_default ?? ''}
+              src={pokemon.sprites.front_default ?? ""}
               alt={pokemon.name}
             />
             <PokemonStat title="Stats" stats={pokemonStats} />
@@ -94,6 +95,6 @@ export const PokemonPage: React.FC = () => {
           </div>
         </>
       )}
-    </div>
+    </PageLayout>
   );
 };

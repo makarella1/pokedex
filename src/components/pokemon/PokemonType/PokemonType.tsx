@@ -1,12 +1,12 @@
-import { clsx } from 'clsx';
-import React from 'react';
+import { clsx } from "clsx";
+import React from "react";
 
-import { transformStatName } from '../../../utils/helpers/transformStatName';
+import { transformStatName } from "../../../utils/helpers/transformStatName";
 
-import styles from './PokemonType.module.css';
+import styles from "./PokemonType.module.css";
 
 interface PokemonTypeProps {
-  type: PokemonType['type'];
+  type: PokemonType["type"];
 }
 
 export const PokemonType: React.FC<PokemonTypeProps> = ({ type }) => {

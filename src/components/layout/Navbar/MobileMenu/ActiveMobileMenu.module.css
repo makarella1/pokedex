@@ -1,0 +1,11 @@
+.menuActive {
+  @apply fixed top-0 left-0 flex h-screen w-screen flex-col items-center justify-center gap-3 bg-white sm:hidden;
+}
+
+.menuLink {
+  @apply text-xl font-bold;
+}
+
+.active {
+  @apply border-b border-black;
+}

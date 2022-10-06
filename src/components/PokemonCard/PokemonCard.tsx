@@ -72,7 +72,7 @@ export const PokemonCard: React.FC<PokemonCardProps> = ({
         <PokemonStat title="Abilities" stats={pokemonAbilities} />
       </div>
 
-      {user.pokemons.length < 7 && (
+      {user.pokemons.length < 6 && (
         <Button
           variant="red"
           onClick={() =>

@@ -1,0 +1,11 @@
+.navLinks {
+  @apply hidden sm:flex;
+}
+
+.navLinks li {
+  @apply mr-8 text-lg last-of-type:mr-0;
+}
+
+.active {
+  @apply border-b border-black;
+}

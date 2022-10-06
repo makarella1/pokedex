@@ -3,7 +3,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 
 import { useGetPokemonInfiniteQuery } from "../../api/hooks";
-import { PokemonCard } from "../../components";
+import { PageLayout, PokemonCard } from "../../components";
 import { getPokemonId } from "../../utils/helpers";
 import { useInView } from "../../utils/hooks";
 
@@ -27,7 +27,7 @@ export const PokemonsPage: React.FC = () => {
   React.useEffect(() => {
     const overflowOptions = selectedPokemonId !== null ? "hidden" : "unset";
 
-    document.body.setAttribute("style", `overflow:${overflowOptions}`);
+    document.body.setAttribute("style", `overflow-y:${overflowOptions}`);
 
     return () => {
       document.body.setAttribute("style", `overflow-y:unset`);
@@ -44,7 +44,7 @@ export const PokemonsPage: React.FC = () => {
   );
 
   return (
-    <div className="container mx-auto">
+    <PageLayout>
       <div className={styles.pokemonsContainer}>
         {pokemons?.map((pokemon, index) => {
           const pokemonId = index + 1;
@@ -85,6 +85,6 @@ export const PokemonsPage: React.FC = () => {
         })}
       </div>
       <div ref={ref} />
-    </div>
+    </PageLayout>
   );
 };

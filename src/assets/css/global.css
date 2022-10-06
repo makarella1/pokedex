@@ -3,9 +3,9 @@
 @tailwind utilities;
 
 body {
-  @apply bg-gray-100;
+  @apply overflow-x-hidden bg-gray-100;
 
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

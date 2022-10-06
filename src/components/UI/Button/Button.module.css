@@ -1,6 +1,6 @@
 .button,
 .button[type="submit"] {
-  @apply mx-auto my-2 flex w-full items-center justify-center rounded-lg bg-inherit py-2 font-semibold;
+  @apply my-1 mx-auto flex w-full items-center justify-center rounded-lg bg-inherit py-2 font-semibold;
   @apply transition-all duration-300 hover:brightness-90;
 }
 

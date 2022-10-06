@@ -1,11 +1,13 @@
 import { nanoid } from "nanoid";
 import React from "react";
 
-import { Loader, UserCard } from "../../components";
-import { PokemonEvolutionChainItem } from "../../components/pokemon";
+import { Loader, PageLayout, UserCard } from "../../components";
+import {
+  PokemonShortCard,
+  PokemonTeam,
+  PokemonTeamMember,
+} from "../../components/pokemon";
 import { useAuthState } from "../../utils/firebase/hooks";
-
-import styles from "./ProfilePage.module.css";
 
 export const ProfilePage: React.FC = () => {
   const { data: user, isLoading } = useAuthState();
@@ -15,13 +17,18 @@ export const ProfilePage: React.FC = () => {
   }
 
   return (
-    <div className={styles.page}>
+    <PageLayout>
       <UserCard user={user} />
+      <PokemonTeam>
+        {user.pokemons.map((pokemon) => (
+          <PokemonTeamMember name={pokemon.name} key={nanoid()} />
+        ))}
+      </PokemonTeam>
       <div>
         {user.pokemons.map((pokemon) => (
-          <PokemonEvolutionChainItem name={pokemon.name} key={nanoid()} />
+          <PokemonShortCard name={pokemon.name} key={nanoid()} />
         ))}
       </div>
-    </div>
+    </PageLayout>
   );
 };

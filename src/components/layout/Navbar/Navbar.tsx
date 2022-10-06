@@ -1,7 +1,9 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
 import pokemonLogo from "../../../assets/img/pokemon_logo.png";
+
+import { DesktopMenu } from "./DesktopMenu/DesktopMenu";
+import { Hamburger } from "./MobileMenu/Hamburger";
 
 import styles from "./Navbar.module.css";
 
@@ -11,16 +13,7 @@ export const Navbar: React.FC = () => (
       <img className={styles.logo} src={pokemonLogo} alt="Logo" />
       <h1 className={styles.title}>Gotta Catch Em All!</h1>
     </div>
-    <ul className={styles.navLinks}>
-      <li className={styles.navLink}>
-        <Link to="/">Pokemons</Link>
-      </li>
-      <li className={styles.navLink}>
-        <Link to="/pokedex">Pokedex</Link>
-      </li>
-      <li className={styles.navLink}>
-        <Link to="/profile">Profile</Link>
-      </li>
-    </ul>
+    <DesktopMenu />
+    <Hamburger />
   </nav>
 );

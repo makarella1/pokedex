@@ -1,0 +1,11 @@
+.container {
+  @apply flex flex-col items-center justify-center gap-4;
+}
+
+.avatar {
+  @apply h-32 w-32 rounded-full;
+}
+
+.name {
+  @apply text-xl font-semibold;
+}
