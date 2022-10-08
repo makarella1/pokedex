@@ -1,11 +1,12 @@
-import { clsx } from 'clsx';
-import React from 'react';
+import { clsx } from "clsx";
+import React from "react";
+import { FieldError } from "react-hook-form";
 
-import styles from './Input.module.css';
+import styles from "./Input.module.css";
 
-interface InputProps extends React.ComponentPropsWithRef<'input'> {
+interface InputProps extends React.ComponentPropsWithRef<"input"> {
   isLoading?: boolean;
-  error?: string;
+  error?: FieldError["message"];
 }
 
 export const Input: React.FC<InputProps> = React.forwardRef(

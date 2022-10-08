@@ -20,7 +20,7 @@ type UseUpdateDocumentParams =
   | UseUpdateUserDocumentParams;
 
 export const useUpdateDocumentMutation = (
-  settings: RequestMutationSettings<typeof updateDocument>
+  settings?: RequestMutationSettings<typeof updateDocument>
 ) =>
   useMutation(
     ["updateDocument"],

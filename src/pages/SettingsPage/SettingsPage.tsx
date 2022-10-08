@@ -1,17 +1,27 @@
+import { signOut, updateProfile } from "firebase/auth";
 import React from "react";
 
 import userDefault from "../../assets/img/user_default.png";
 import { Loader, PageLayout } from "../../components";
-import { useAuthState } from "../../utils/firebase/hooks";
+import { auth } from "../../utils/firebase/config";
+import {
+  useAuthState,
+  useUpdateDocumentMutation,
+  useUploadFile,
+} from "../../utils/firebase/hooks";
 
 import styles from "./SettingsPage.module.css";
 
-interface SettingsPageProps {}
-
-export const SettingsPage = () => {
-  const [file, setFile] = React.useState<File | null>(null);
-
+export const SettingsPage: React.FC = () => {
   const { data: user, isLoading } = useAuthState();
+  const { uploadFile } = useUploadFile();
+  const updateDocumentMutation = useUpdateDocumentMutation({
+    options: {
+      onSuccess: () => {
+        console.log("success!");
+      },
+    },
+  });
 
   const isUser = user && !isLoading;
 
@@ -19,16 +29,22 @@ export const SettingsPage = () => {
     return <Loader />;
   }
 
-  const uploadHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
+  console.log(user);
+
+  const uploadHandler = async (event: React.ChangeEvent<HTMLInputElement>) => {
     if (!event.target.files) {
       return;
     }
 
-    const [file] = event.target.files;
+    const [newFile] = event.target.files;
 
-    setFile(file);
+    const url = await uploadFile(newFile);
 
-    console.log(file);
+    updateDocumentMutation.mutateAsync({
+      collection: "users",
+      data: { photoURL: url },
+      id: user.uid,
+    });
   };
 
   return (
@@ -40,6 +56,7 @@ export const SettingsPage = () => {
             id="file"
             style={{ display: "none" }}
             onChange={uploadHandler}
+            accept="image/*"
           />
           <img
             className={styles.avatar}
@@ -53,6 +70,7 @@ export const SettingsPage = () => {
         </label>
         <h1 className={styles.name}>{user.displayName}</h1>
       </div>
+      <button onClick={() => signOut(auth)}>dadada</button>
     </PageLayout>
   );
 };

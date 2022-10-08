@@ -58,7 +58,7 @@ export const SignUpForm: React.FC = () => {
       )}
     >
       <Input
-        {...register("name", {
+        {...register("displayName", {
           required: "What's your name?",
           minLength: {
             value: 2,
@@ -67,7 +67,7 @@ export const SignUpForm: React.FC = () => {
         })}
         placeholder="Name"
         disabled={isDisabled}
-        error={errors.name?.message}
+        error={errors.displayName?.message}
       />
       <Input
         {...register("email", {

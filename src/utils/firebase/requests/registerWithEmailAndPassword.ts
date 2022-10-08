@@ -8,17 +8,23 @@ export const registerWithEmailAndPassword = async (
   user: User,
   password: string
 ) => {
-  const { user: newUser } = await createUserWithEmailAndPassword(
+  const { user: createdUser } = await createUserWithEmailAndPassword(
     auth,
     user.email,
     password
   );
 
-  updateProfile(newUser, { displayName: `${user.displayName}` });
+  updateProfile(createdUser, { displayName: `${user.displayName}` });
+
+  const newUser = {
+    displayName: createdUser.displayName,
+    email: createdUser.email,
+    photoURL: createdUser.photoURL,
+  };
 
   addDocument(
     "users",
-    { ...user, uid: newUser.uid, pokemons: [] },
-    newUser.uid
+    { ...newUser, uid: createdUser.uid, pokemons: [] },
+    createdUser.uid
   );
 };

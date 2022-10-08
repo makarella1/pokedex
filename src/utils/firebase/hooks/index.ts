@@ -6,3 +6,4 @@ export * from "./useLoginWithEmailAndPasswordMutation";
 export * from "./useLogoutMutation";
 export * from "./useRegisterWithEmailAndPasswordMutation";
 export * from "./useUpdateDocumentMutation";
+export * from "./useUploadFile";

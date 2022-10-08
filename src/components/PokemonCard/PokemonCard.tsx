@@ -79,7 +79,6 @@ export const PokemonCard: React.FC<PokemonCardProps> = ({
             addPokemon.mutate({
               collection: "users",
               data: {
-                ...user,
                 pokemons: [
                   ...user.pokemons,
                   {

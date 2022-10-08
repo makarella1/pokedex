@@ -6,8 +6,7 @@ import { usePromise } from "../../hooks";
 import { auth, db } from "../config";
 
 export const useAuthState = () => {
-  const { data, setData, isLoading, setIsLoading, setError, isError, error } =
-    usePromise<UserDocument>();
+  const { data, setData, isLoading, setIsLoading } = usePromise<User>();
 
   React.useEffect(() => {
     const listenter = onAuthStateChanged(auth, async (user) => {
