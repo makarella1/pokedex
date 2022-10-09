@@ -45,6 +45,7 @@ export const SettingsPage: React.FC = () => {
       data: { photoURL: url },
       id: user.uid,
     });
+    updateProfile(auth.currentUser!, { photoURL: url });
   };
 
   return (

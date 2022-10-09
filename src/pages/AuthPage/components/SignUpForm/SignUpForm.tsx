@@ -53,9 +53,10 @@ export const SignUpForm: React.FC = () => {
   return (
     <form
       className={styles.form}
-      onSubmit={handleSubmit(({ password, ...user }) =>
-        registerWithEmailAndPassword({ user, password })
-      )}
+      onSubmit={handleSubmit(({ password, ...user }) => {
+        console.log(user);
+        registerWithEmailAndPassword({ user, password });
+      })}
     >
       <Input
         {...register("displayName", {
@@ -67,6 +68,7 @@ export const SignUpForm: React.FC = () => {
         })}
         placeholder="Name"
         disabled={isDisabled}
+        // @ts-ignore
         error={errors.displayName?.message}
       />
       <Input
@@ -76,6 +78,7 @@ export const SignUpForm: React.FC = () => {
         })}
         placeholder="Email"
         disabled={isDisabled}
+        // @ts-ignore
         error={errors.email?.message}
       />
       <Input

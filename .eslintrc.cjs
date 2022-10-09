@@ -25,7 +25,6 @@ module.exports = {
     extraFileExtensions: [".cjs"],
   },
   ignorePatterns: [
-    "tailwind.config.cjs",
     "postcss.config.cjs",
     "prettier.config.cjs",
     "vite.config.ts",

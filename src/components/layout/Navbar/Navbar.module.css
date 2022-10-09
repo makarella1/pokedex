@@ -1,5 +1,5 @@
 .nav {
-  @apply sticky top-0 z-20 flex w-full items-center justify-between bg-white px-10 py-4 shadow lg:px-20;
+  @apply sticky top-0 z-10 flex w-full items-center justify-between bg-white px-10 py-4 shadow lg:px-20;
 }
 
 .logoContainer {

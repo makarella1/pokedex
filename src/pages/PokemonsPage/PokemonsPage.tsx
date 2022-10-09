@@ -3,7 +3,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 
 import { useGetPokemonInfiniteQuery } from "../../api/hooks";
-import { PageLayout, PokemonCard } from "../../components";
+import { PageLayout, PokemonModal } from "../../components";
 import { getPokemonId } from "../../utils/helpers";
 import { useInView } from "../../utils/hooks";
 
@@ -74,7 +74,7 @@ export const PokemonsPage: React.FC = () => {
               </div>
               {selectedPokemonId === pokemonId &&
                 ReactDOM.createPortal(
-                  <PokemonCard
+                  <PokemonModal
                     id={pokemonId}
                     onCloseModal={() => setSelectedPokemonId(null)}
                   />,

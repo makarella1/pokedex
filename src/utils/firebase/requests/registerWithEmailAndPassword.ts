@@ -14,7 +14,7 @@ export const registerWithEmailAndPassword = async (
     password
   );
 
-  updateProfile(createdUser, { displayName: `${user.displayName}` });
+  await updateProfile(createdUser, { displayName: `${user.displayName}` });
 
   const newUser = {
     displayName: createdUser.displayName,

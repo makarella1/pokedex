@@ -19,16 +19,20 @@ export const ProfilePage: React.FC = () => {
   return (
     <PageLayout>
       <UserCard user={user} />
-      <PokemonTeam>
-        {user.pokemons.map((pokemon) => (
-          <PokemonTeamMember name={pokemon.name} key={nanoid()} />
-        ))}
-      </PokemonTeam>
-      <div>
-        {user.pokemons.map((pokemon) => (
-          <PokemonShortCard name={pokemon.name} key={nanoid()} />
-        ))}
-      </div>
+      {user.pokemons.length > 0 && (
+        <>
+          <PokemonTeam>
+            {user.pokemons.map((pokemon) => (
+              <PokemonTeamMember name={pokemon.name} key={nanoid()} />
+            ))}
+          </PokemonTeam>
+          <div>
+            {user.pokemons.map((pokemon) => (
+              <PokemonShortCard name={pokemon.name} key={nanoid()} />
+            ))}
+          </div>
+        </>
+      )}
     </PageLayout>
   );
 };

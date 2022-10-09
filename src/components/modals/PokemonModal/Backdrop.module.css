@@ -1,0 +1,3 @@
+.backdrop {
+  @apply absolute left-0 top-0 z-20 h-screen w-screen animate-backdrop-appear bg-black opacity-70;
+}

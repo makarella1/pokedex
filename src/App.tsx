@@ -12,6 +12,7 @@ import {
   PokemonsPage,
   ProfilePage,
   SettingsPage,
+  UsersPage,
 } from "./pages";
 
 export const Auth = () => (
@@ -39,6 +40,7 @@ const App: React.FC = () => {
             <Route path={ROUTES.POKEMON} element={<PokemonPage />} />
             <Route path={ROUTES.PROFILE} element={<ProfilePage />} />
             <Route path={ROUTES.SETTINGS} element={<SettingsPage />} />
+            <Route path={ROUTES.USERS} element={<UsersPage />} />
           </Route>
         </Routes>
       )}
