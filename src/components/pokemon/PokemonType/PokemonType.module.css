@@ -7,7 +7,7 @@
 }
 
 .poison {
-  @apply border-purple-700 text-purple-700 shadow-green-700/50;
+  @apply border-purple-700 text-purple-700 shadow-purple-700/50;
 }
 
 .fire {
@@ -72,4 +72,68 @@
 
 .ghost {
   @apply border-black text-black shadow-black/50;
+}
+
+:global(.dark) .grass {
+  @apply border-green-500 text-green-500 shadow-green-500/50;
+}
+
+:global(.dark) .poison {
+  @apply border-purple-500 text-purple-500 shadow-purple-500/50;
+}
+
+:global(.dark) .fire {
+  @apply border-orange-500 text-orange-500 shadow-orange-500/50;
+}
+
+:global(.dark) .flying {
+  @apply border-sky-400 text-sky-400 shadow-sky-400/50;
+}
+
+:global(.dark) .water {
+  @apply border-blue-300 text-blue-300 shadow-blue-300/50;
+}
+
+:global(.dark) .electric {
+  @apply border-yellow-400 text-yellow-400 shadow-yellow-400/50;
+}
+
+:global(.dark) .ground {
+  @apply border-yellow-600 text-yellow-600 shadow-yellow-600/50;
+}
+
+:global(.dark) .dark {
+  @apply border-slate-200 text-slate-200 shadow-slate-200/50;
+}
+
+:global(.dark) .normal {
+  @apply border-neutral-400 text-neutral-400 shadow-neutral-400/50;
+}
+
+:global(.dark) .rock {
+  @apply border-gray-400 text-gray-400 shadow-gray-400/50;
+}
+
+:global(.dark) .steel {
+  @apply border-zinc-300 text-zinc-300 shadow-zinc-300/50;
+}
+
+:global(.dark) .ghost {
+  @apply border-white text-white shadow-white/50;
+}
+
+:global(.dark) .fairy {
+  @apply border-pink-500 text-pink-500 shadow-pink-500/50;
+}
+
+:global(.dark) .psychic {
+  @apply border-violet-500 text-violet-500 shadow-violet-500/50;
+}
+
+:global(.dark) .dragon {
+  @apply border-rose-400 text-rose-400 shadow-rose-400/50;
+}
+
+:global(.dark) .fighting {
+  @apply border-red-500 text-red-500 shadow-red-500/50;
 }

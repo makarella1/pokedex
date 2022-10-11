@@ -23,9 +23,9 @@ export const DesktopMenu: React.FC = () => (
         className={({ isActive }) =>
           clsx(styles.navLink, isActive && styles.active)
         }
-        to={ROUTES.POKEDEX}
+        to={ROUTES.PROFILE}
       >
-        Pokedex
+        Profile
       </NavLink>
     </li>
     <li>
@@ -33,9 +33,9 @@ export const DesktopMenu: React.FC = () => (
         className={({ isActive }) =>
           clsx(styles.navLink, isActive && styles.active)
         }
-        to={ROUTES.PROFILE}
+        to={ROUTES.USERS}
       >
-        Profile
+        Users
       </NavLink>
     </li>
     <li>

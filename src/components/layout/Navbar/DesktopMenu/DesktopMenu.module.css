@@ -1,5 +1,5 @@
 .navLinks {
-  @apply hidden sm:flex;
+  @apply hidden md:flex;
 }
 
 .navLinks li {
@@ -8,4 +8,8 @@
 
 .active {
   @apply border-b border-black;
+}
+
+:global(.dark) .active {
+  @apply border-white;
 }

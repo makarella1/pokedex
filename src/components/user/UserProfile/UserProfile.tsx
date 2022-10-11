@@ -1,9 +1,9 @@
 import { User } from "firebase/auth";
 import React from "react";
 
-import userDefault from "../../assets/img/user_default.png";
-import { useLogoutMutation } from "../../utils/firebase/hooks";
-import { Button } from "../UI/Button/Button";
+import userDefault from "../../../assets/img/user_default.png";
+import { useLogoutMutation } from "../../../utils/firebase/hooks";
+import { Button } from "../../UI/Button/Button";
 
 import styles from "./UserProfile.module.css";
 
@@ -28,7 +28,7 @@ export const UserProfile: React.FC<UserProfileProps> = ({ user }) => {
           <div>{user?.email}</div>
         </div>
       </div>
-      <Button variant="red" onClick={() => logout.mutate({})}>
+      <Button variant="primary" onClick={() => logout.mutate({})}>
         Logout
       </Button>
     </div>

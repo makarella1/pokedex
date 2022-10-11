@@ -15,21 +15,13 @@ import styles from "./SettingsPage.module.css";
 export const SettingsPage: React.FC = () => {
   const { data: user, isLoading } = useAuthState();
   const { uploadFile } = useUploadFile();
-  const updateDocumentMutation = useUpdateDocumentMutation({
-    options: {
-      onSuccess: () => {
-        console.log("success!");
-      },
-    },
-  });
+  const updateDocumentMutation = useUpdateDocumentMutation();
 
   const isUser = user && !isLoading;
 
   if (!isUser) {
     return <Loader />;
   }
-
-  console.log(user);
 
   const uploadHandler = async (event: React.ChangeEvent<HTMLInputElement>) => {
     if (!event.target.files) {
@@ -69,7 +61,17 @@ export const SettingsPage: React.FC = () => {
             }}
           />
         </label>
-        <h1 className={styles.name}>{user.displayName}</h1>
+        <div className={styles.info}>
+          <p className={styles.infoItem}>
+            <span>{user.uid}</span>
+          </p>
+          <p className={styles.infoItem}>
+            Username: <span>{user.displayName}</span>
+          </p>
+          <p className={styles.infoItem}>
+            Email: <span>{user.email}</span>
+          </p>
+        </div>
       </div>
       <button onClick={() => signOut(auth)}>dadada</button>
     </PageLayout>

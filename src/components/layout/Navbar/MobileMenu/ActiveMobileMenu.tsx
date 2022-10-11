@@ -36,10 +36,10 @@ export const ActiveMobileMenu: React.FC<ActiveMobileMenuProps> = ({
       className={({ isActive }) =>
         clsx(styles.menuLink, isActive && styles.active)
       }
-      to={ROUTES.POKEDEX}
+      to={ROUTES.SETTINGS}
       onClick={() => onClose()}
     >
-      Pokedex
+      Profile
     </NavLink>
     <NavLink
       className={({ isActive }) =>

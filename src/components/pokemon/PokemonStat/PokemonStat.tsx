@@ -1,7 +1,7 @@
-import { nanoid } from 'nanoid';
-import React from 'react';
+import { nanoid } from "nanoid";
+import React from "react";
 
-import styles from './PokemonStat.module.css';
+import styles from "./PokemonStat.module.css";
 
 interface PokemonStatProps {
   title: string;
@@ -16,7 +16,7 @@ export const PokemonStat: React.FC<PokemonStatProps> = ({ title, stats }) => {
   ));
 
   return (
-    <div>
+    <div className={styles.statCard}>
       <h3 className={styles.infoTitle}>{title}</h3>
       <ul>{statItems}</ul>
     </div>

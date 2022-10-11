@@ -73,25 +73,29 @@ export const PokemonPage: React.FC = () => {
               src={pokemon.sprites.front_default ?? ""}
               alt={pokemon.name}
             />
-            <PokemonStat title="Stats" stats={pokemonStats} />
-            <PokemonStat title="Abilities" stats={pokemonAbilities} />
+            <div className={styles.stats}>
+              <PokemonStat title="Stats" stats={pokemonStats} />
+              <PokemonStat title="Abilities" stats={pokemonAbilities} />
+            </div>
           </div>
-          <PokemonEvolutionChain id={chainId} pokemonName={pokemon.name} />
-          <div className={styles.buttonContainer}>
-            <Button
-              variant="blue"
-              onClick={() => navigate(`/pokemon/${pokemon.id + 1}`)}
-            >
-              See Next Pokemon
-            </Button>
-            {pokemon.id > 1 && (
+          <div className={styles.chain}>
+            <PokemonEvolutionChain id={chainId} pokemonName={pokemon.name} />
+            <div className={styles.buttonContainer}>
+              {pokemon.id > 1 && (
+                <Button
+                  variant="primary"
+                  onClick={() => navigate(`/pokemon/${pokemon.id - 1}`)}
+                >
+                  See Previous Pokemon
+                </Button>
+              )}
               <Button
-                variant="red"
-                onClick={() => navigate(`/pokemon/${pokemon.id - 1}`)}
+                variant="secondary"
+                onClick={() => navigate(`/pokemon/${pokemon.id + 1}`)}
               >
-                See Previous Pokemon
+                See Next Pokemon
               </Button>
-            )}
+            </div>
           </div>
         </>
       )}

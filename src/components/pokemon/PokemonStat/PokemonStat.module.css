@@ -1,7 +1,15 @@
+.statCard {
+  @apply w-full rounded-lg bg-white p-5 shadow-lg;
+}
+
 .infoTitle {
   @apply text-2xl font-bold;
 }
 
 .pokemonCardStat {
   @apply mb-2 border-b border-gray-300 pb-1;
+}
+
+:global(.dark) .statCard {
+  @apply bg-slate-600;
 }

@@ -1,11 +1,23 @@
 .container {
-  @apply flex flex-col items-center justify-center gap-4;
+  @apply mx-auto flex max-w-xl items-center justify-between gap-4;
 }
 
 .avatar {
   @apply h-32 w-32 rounded-full;
 }
 
-.name {
-  @apply text-xl font-semibold;
+.info {
+  @apply flex flex-col gap-4 rounded-lg bg-white p-6;
+}
+
+.infoItem {
+  @apply text-xl;
+}
+
+.infoItem span {
+  @apply font-semibold;
+}
+
+:global(.dark) .info {
+  @apply bg-slate-600;
 }

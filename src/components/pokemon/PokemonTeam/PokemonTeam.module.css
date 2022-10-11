@@ -1,3 +1,7 @@
 .team {
-  @apply my-4 grid grid-cols-3 gap-2 rounded-xl border-2 border-gray-300 bg-white p-8 shadow-lg;
+  @apply my-4 grid grid-cols-3 gap-2 rounded-xl bg-blue-100 p-8 shadow-lg;
+}
+
+:global(.dark) .team {
+  @apply border-blue-200 bg-slate-700;
 }

@@ -7,7 +7,6 @@ import { useAuthState } from "./utils/firebase/hooks";
 import { Loader } from "./components";
 import {
   AuthPage,
-  PokedexPage,
   PokemonPage,
   PokemonsPage,
   ProfilePage,
@@ -36,7 +35,6 @@ const App: React.FC = () => {
         <Routes>
           <Route element={<Layout />}>
             <Route path={ROUTES.POKEMONS} element={<PokemonsPage />} />
-            <Route path={ROUTES.POKEDEX} element={<PokedexPage />} />
             <Route path={ROUTES.POKEMON} element={<PokemonPage />} />
             <Route path={ROUTES.PROFILE} element={<ProfilePage />} />
             <Route path={ROUTES.SETTINGS} element={<SettingsPage />} />

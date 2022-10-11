@@ -1,0 +1,23 @@
+.card {
+  @apply mb-6 flex max-w-[500px] flex-col rounded-xl bg-white p-4 text-center shadow-lg;
+}
+
+.info {
+  @apply flex items-center gap-4;
+}
+
+.image {
+  @apply h-24 w-24 rounded-xl;
+}
+
+.name {
+  @apply font-bold;
+}
+
+.text {
+  @apply my-auto;
+}
+
+:global(.dark) .card {
+  @apply bg-slate-600;
+}

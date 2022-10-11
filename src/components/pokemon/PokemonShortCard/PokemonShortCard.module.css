@@ -1,5 +1,5 @@
 .shortCard {
-  @apply my-4 flex items-center rounded-xl bg-white shadow-lg;
+  @apply flex items-center rounded-xl bg-white shadow-lg;
 }
 
 .cardImage {
@@ -7,7 +7,7 @@
 }
 
 .info {
-  @apply flex h-full flex-col gap-4;
+  @apply flex h-full flex-col justify-center gap-4;
 }
 
 .types {
@@ -16,4 +16,8 @@
 
 .name {
   @apply font-semibold;
+}
+
+:global(.dark) .shortCard {
+  @apply bg-slate-600;
 }

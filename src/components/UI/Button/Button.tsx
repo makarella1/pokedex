@@ -3,7 +3,7 @@ import React from "react";
 
 import styles from "./Button.module.css";
 
-type ButtonVariant = "blue" | "red" | "outlinedBlue" | "outlinedRed" | "plain";
+type ButtonVariant = "primary" | "secondary";
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode;
   variant: ButtonVariant;

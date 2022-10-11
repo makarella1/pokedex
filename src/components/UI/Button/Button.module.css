@@ -1,29 +1,15 @@
 .button,
 .button[type="submit"] {
-  @apply my-1 mx-auto flex w-full items-center justify-center rounded-lg bg-inherit py-2 font-semibold;
-  @apply transition-all duration-300 hover:brightness-90;
+  @apply my-1 mx-auto flex w-full items-center justify-center rounded-lg bg-inherit py-4 font-semibold;
+  @apply transition-all duration-300;
 }
 
-.red,
-.red[type="submit"] {
-  @apply bg-red-500 text-white;
+.primary,
+.primary[type="submit"] {
+  @apply bg-blue-500 text-white hover:bg-blue-600;
 }
 
-.blue,
-.blue[type="submit"] {
-  @apply bg-blue-500 text-white;
-}
-
-.outlinedBlue,
-.outlinedBlue[type="submit"] {
-  @apply border-2 border-blue-500;
-}
-
-.outlinedRed,
-.outlinedRed[type="submit"] {
-  @apply border-2 border-red-500;
-}
-
-.plain {
-  @apply my-0 border-none;
+.secondary,
+.secondary[type="submit"] {
+  @apply border border-blue-500 text-blue-500 hover:bg-blue-50;
 }

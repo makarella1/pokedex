@@ -1,0 +1,23 @@
+.modalTop {
+  @apply flex items-center justify-between;
+}
+
+.image {
+  @apply mx-auto h-52 w-52;
+}
+
+.title {
+  @apply text-2xl font-bold;
+}
+
+.buttons {
+  @apply flex justify-between gap-2;
+}
+
+.modalBottom {
+  @apply xl:mt-auto;
+}
+
+:global(.dark) .pokemonModal {
+  @apply bg-slate-600 text-white;
+}

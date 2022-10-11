@@ -2,14 +2,22 @@
   @apply sticky top-0 z-10 flex w-full items-center justify-between bg-white px-10 py-4 shadow lg:px-20;
 }
 
-.logoContainer {
+:global(.dark) .nav {
+  @apply bg-slate-600 text-white;
+}
+
+.left {
   @apply flex items-center;
 }
 
 .logo {
-  @apply mr-10 h-14 w-36;
+  @apply mr-10 h-10 w-24 sm:h-14 sm:w-36;
 }
 
 .title {
   @apply hidden text-xl font-bold lg:block;
+}
+
+.right {
+  @apply flex gap-6;
 }

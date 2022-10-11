@@ -1,5 +1,5 @@
 .menuActive {
-  @apply fixed top-0 left-0 flex h-screen w-screen flex-col items-center justify-center gap-3 bg-white sm:hidden;
+  @apply fixed top-0 left-0 flex h-screen w-screen flex-col items-center justify-center gap-3 bg-white md:hidden;
 }
 
 .menuLink {
@@ -8,4 +8,12 @@
 
 .active {
   @apply border-b border-black;
+}
+
+:global(.dark) .menuActive {
+  @apply bg-slate-600 text-white;
+}
+
+:global(.dark) .active {
+  @apply border-white;
 }

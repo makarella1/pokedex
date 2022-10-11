@@ -1,9 +1,13 @@
 .hamburger {
-  @apply z-50 block sm:hidden;
+  @apply z-50 block md:hidden;
 }
 
 .line {
   @apply my-1 block h-1 w-8 bg-slate-500 transition-all duration-200;
+}
+
+:global(.dark) .line {
+  @apply bg-slate-100;
 }
 
 .lineActive:nth-child(1) {

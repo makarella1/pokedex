@@ -1,9 +1,9 @@
 import { nanoid } from "nanoid";
 import React from "react";
-import ReactDOM from "react-dom";
 
 import { useGetPokemonInfiniteQuery } from "../../api/hooks";
 import { PageLayout, PokemonModal } from "../../components";
+import { Modal } from "../../components/UI";
 import { getPokemonId } from "../../utils/helpers";
 import { useInView } from "../../utils/hooks";
 
@@ -72,14 +72,14 @@ export const PokemonsPage: React.FC = () => {
                 <div className={styles.pokemonName}>{pokemon.name}</div>
                 <div>{getPokemonId(String(index + 1))}</div>
               </div>
-              {selectedPokemonId === pokemonId &&
-                ReactDOM.createPortal(
+              {selectedPokemonId === pokemonId && (
+                <Modal onCloseModal={() => setSelectedPokemonId(null)}>
                   <PokemonModal
-                    id={pokemonId}
                     onCloseModal={() => setSelectedPokemonId(null)}
-                  />,
-                  document.querySelector("#modal") as HTMLDivElement
-                )}
+                    id={pokemonId}
+                  />
+                </Modal>
+              )}
             </div>
           );
         })}

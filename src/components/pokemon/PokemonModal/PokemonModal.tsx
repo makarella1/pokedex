@@ -6,10 +6,8 @@ import {
   useUpdateDocumentMutation,
 } from "../../../utils/firebase/hooks";
 import { getPokemonId, transformStatName } from "../../../utils/helpers";
-import { PokemonTypes } from "../../pokemon";
-import { Button } from "../../UI/Button/Button";
-
-import { Backdrop } from "./Backdrop";
+import { Button } from "../../UI";
+import { PokemonTypes } from "..";
 
 import styles from "./PokemonModal.module.css";
 
@@ -44,22 +42,22 @@ export const PokemonModal: React.FC<PokemonModalProps> = ({
 
   return (
     <>
-      <Backdrop onClick={() => onCloseModal()} />
-      <div className={styles.pokemonModal}>
-        <div className={styles.modalTop}>
-          <div>
-            <p className={styles.title}>{transformStatName(pokemon.name)}</p>
-            <p>{getPokemonId(String(pokemon.id))}</p>
-          </div>
+      <div className={styles.modalTop}>
+        <div>
+          <p className={styles.title}>{transformStatName(pokemon.name)}</p>
+          <p>{getPokemonId(String(pokemon.id))}</p>
         </div>
-
-        <img src={pokemon.sprites.front_default ?? ""} alt={pokemon.name} />
-
-        <PokemonTypes types={pokemon.types} />
-
+      </div>
+      <img
+        className={styles.image}
+        src={pokemon.sprites.front_default ?? ""}
+        alt={pokemon.name}
+      />
+      <PokemonTypes types={pokemon.types} />
+      <div className={styles.modalBottom}>
         {user.pokemons.length < 6 && (
           <Button
-            variant="red"
+            variant="primary"
             onClick={() =>
               addPokemon.mutate({
                 collection: "users",
@@ -80,11 +78,11 @@ export const PokemonModal: React.FC<PokemonModalProps> = ({
             Add to my team
           </Button>
         )}
-        <div>
-          <Button variant="blue" onClick={openPageHandler}>
+        <div className={styles.buttons}>
+          <Button variant="secondary" onClick={openPageHandler}>
             Open
           </Button>
-          <Button variant="outlinedBlue" onClick={() => onCloseModal()}>
+          <Button variant="primary" onClick={() => onCloseModal()}>
             Close
           </Button>
         </div>
