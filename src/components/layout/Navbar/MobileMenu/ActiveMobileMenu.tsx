@@ -36,10 +36,10 @@ export const ActiveMobileMenu: React.FC<ActiveMobileMenuProps> = ({
       className={({ isActive }) =>
         clsx(styles.menuLink, isActive && styles.active)
       }
-      to={ROUTES.SETTINGS}
+      to={ROUTES.USERS}
       onClick={() => onClose()}
     >
-      Profile
+      Users
     </NavLink>
     <NavLink
       className={({ isActive }) =>

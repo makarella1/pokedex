@@ -3,7 +3,7 @@ import React from "react";
 
 import { useGetPokemonInfiniteQuery } from "../../api/hooks";
 import { PageLayout, PokemonModal } from "../../components";
-import { Modal } from "../../components/UI";
+import { Loader, Modal } from "../../components/UI";
 import { getPokemonId } from "../../utils/helpers";
 import { useInView } from "../../utils/hooks";
 
@@ -35,7 +35,7 @@ export const PokemonsPage: React.FC = () => {
   }, [selectedPokemonId]);
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <Loader />;
   }
 
   const pokemons = data?.pages.reduce(

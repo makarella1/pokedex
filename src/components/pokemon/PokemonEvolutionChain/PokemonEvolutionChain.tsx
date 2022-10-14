@@ -3,6 +3,7 @@ import React from "react";
 
 import { useGetEvolutionChain } from "../../../api/hooks";
 import { getEvolutionChain } from "../../../utils/helpers";
+import { Loader } from "../../UI";
 
 import { PokemonEvolutionChainItem } from "./PokemonEvolutionChainItem/PokemonEvolutionChainItem";
 
@@ -23,7 +24,7 @@ export const PokemonEvolutionChain: React.FC<PokemonEvolutionChainProps> = ({
   const isEvolutionChainData = evolutionChainData && !isEvolutionChainLoading;
 
   if (!isEvolutionChainData) {
-    return <div>Loading...</div>;
+    return <Loader />;
   }
 
   const { chain } = evolutionChainData.data;

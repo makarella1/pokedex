@@ -20,6 +20,8 @@ interface PokemonDocument {
   user: User["uid"];
 }
 
+type Theme = "dark" | "light";
+
 interface NamedAPIResource {
   /** The name of the referenced resource */
   name: string;

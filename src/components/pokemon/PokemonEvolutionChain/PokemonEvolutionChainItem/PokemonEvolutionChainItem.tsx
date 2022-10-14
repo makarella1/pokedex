@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 import { useGetPokemonQuery } from "../../../../api/hooks";
 import { transformStatName } from "../../../../utils/helpers";
+import { Loader } from "../../../UI";
 import { PokemonType } from "../../PokemonType/PokemonType";
 
 import styles from "./PokemonEvolutionChainItem.module.css";
@@ -25,7 +26,7 @@ export const PokemonEvolutionChainItem: React.FC<
   const isPokemonData = pokemonData && !isPokemonDataLoading;
 
   if (!isPokemonData) {
-    return <div>Loading...</div>;
+    return <Loader />;
   }
 
   const { data: pokemon } = pokemonData;

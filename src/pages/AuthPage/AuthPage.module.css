@@ -1,8 +1,5 @@
-.page {
-  @apply flex h-screen flex-col justify-center;
-  @apply sm:mx-auto sm:w-4/5 sm:flex-row sm:items-center sm:justify-between;
-  @apply lg:w-3/5;
-  @apply xl:w-1/2;
+.auth {
+  @apply flex h-screen flex-col items-center justify-center;
 }
 
 .authLogo {

@@ -4,7 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useGetPokemonQuery, useGetPokemonSpeciesQuery } from "../../api/hooks";
 import { PageLayout } from "../../components";
 import { PokemonEvolutionChain, PokemonStat } from "../../components/pokemon";
-import { Button } from "../../components/UI";
+import { Button, Loader } from "../../components/UI";
 import {
   getLastNumber,
   getPokemonId,
@@ -39,7 +39,7 @@ export const PokemonPage: React.FC = () => {
   const isData = pokemonQueryData && pokemonSpeciesData;
 
   if (isLoading || !isData) {
-    return <div>Loading...</div>;
+    return <Loader />;
   }
 
   const { data: pokemon } = pokemonQueryData;

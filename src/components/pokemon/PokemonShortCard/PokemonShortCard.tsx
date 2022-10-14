@@ -2,6 +2,7 @@ import { nanoid } from "nanoid";
 import React from "react";
 
 import { useGetPokemonQuery } from "../../../api/hooks";
+import { Loader } from "../../UI";
 import { PokemonType } from "../PokemonType/PokemonType";
 
 import styles from "./PokemonShortCard.module.css";
@@ -16,7 +17,7 @@ export const PokemonShortCard: React.FC<PokemonShortCardProps> = ({ name }) => {
   const isPokemonData = !isLoading && pokemonData;
 
   if (!isPokemonData) {
-    return null;
+    return <Loader />;
   }
 
   const { data: pokemon } = pokemonData;

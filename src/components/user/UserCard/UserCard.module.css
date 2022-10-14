@@ -1,5 +1,5 @@
 .card {
-  @apply mb-6 flex max-w-[500px] flex-col rounded-xl bg-white p-4 text-center shadow-lg;
+  @apply flex w-full flex-col rounded-xl bg-white p-4 text-center shadow-lg;
 }
 
 .info {

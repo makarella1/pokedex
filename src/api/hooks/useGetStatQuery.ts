@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 
-import { getStat } from "../../requests";
+import { getStat } from "../requests";
 
 interface UseGetStatQueryParams {
   id: number;

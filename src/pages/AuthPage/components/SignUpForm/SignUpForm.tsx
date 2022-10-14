@@ -48,16 +48,14 @@ export const SignUpForm: React.FC = () => {
       },
     });
 
+  const registerHandler = handleSubmit(({ password, ...user }) => {
+    registerWithEmailAndPassword({ user, password });
+  });
+
   const isDisabled = isLoading || isSubmitting;
 
   return (
-    <form
-      className={styles.form}
-      onSubmit={handleSubmit(({ password, ...user }) => {
-        console.log(user);
-        registerWithEmailAndPassword({ user, password });
-      })}
-    >
+    <form className={styles.form} onSubmit={registerHandler}>
       <Input
         {...register("displayName", {
           required: "What's your name?",
@@ -90,7 +88,7 @@ export const SignUpForm: React.FC = () => {
         disabled={isDisabled}
         error={errors.password?.message}
       />
-      <Button variant="red" type="submit">
+      <Button variant="primary" type="submit">
         Sign up
       </Button>
     </form>

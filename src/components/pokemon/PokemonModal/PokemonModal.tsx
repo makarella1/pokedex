@@ -6,7 +6,7 @@ import {
   useUpdateDocumentMutation,
 } from "../../../utils/firebase/hooks";
 import { getPokemonId, transformStatName } from "../../../utils/helpers";
-import { Button } from "../../UI";
+import { Button, Loader } from "../../UI";
 import { PokemonTypes } from "..";
 
 import styles from "./PokemonModal.module.css";
@@ -30,7 +30,7 @@ export const PokemonModal: React.FC<PokemonModalProps> = ({
   });
 
   if (isLoading || !data || !user) {
-    return null;
+    return <Loader />;
   }
 
   const { data: pokemon } = data;

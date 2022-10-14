@@ -2,28 +2,23 @@ import { clsx } from "clsx";
 import React from "react";
 import { BsFillMoonStarsFill, BsFillSunFill } from "react-icons/bs";
 
+import { useTheme } from "../../../utils/hooks";
+
 import styles from "./Switcher.module.css";
 
 export const Switcher: React.FC = () => {
-  const [theme, setTheme] = React.useState<"dark" | null>(null);
-
-  React.useEffect(() => {
-    document.documentElement.classList.toggle("dark");
-  }, [theme]);
+  const { theme, setTheme } = useTheme();
 
   return (
-    <div className="flex items-center gap-2">
-      <BsFillSunFill fill={theme === "dark" ? "black" : "white"} />
+    <div className={styles.switcher}>
+      <BsFillSunFill className={styles.icon} />
       <button
-        className="flex h-4 w-8 items-center rounded-lg bg-slate-400 px-0.5"
-        onClick={() =>
-          setTheme((prevState) => (prevState === "dark" ? null : "dark"))
-        }
+        className={styles.button}
+        onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
       >
-        <div className={clsx(styles.circle, theme !== "dark" && styles.dark)} />
+        <div className={clsx(styles.circle, theme === "dark" && styles.dark)} />
       </button>
-
-      <BsFillMoonStarsFill fill={theme === "dark" ? "black" : "white"} />
+      <BsFillMoonStarsFill className={styles.icon} />
     </div>
   );
 };

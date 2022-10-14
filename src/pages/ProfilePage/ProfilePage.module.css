@@ -1,3 +1,7 @@
 .pokemons {
   @apply grid grid-cols-1 gap-3 md:grid-cols-3;
 }
+
+.card {
+  @apply mb-6 w-full md:max-w-[500px];
+}

@@ -1,3 +1,4 @@
+import { updateProfile } from "firebase/auth";
 import {
   doc,
   DocumentData,
@@ -5,7 +6,7 @@ import {
   WithFieldValue,
 } from "firebase/firestore";
 
-import { Collection, db } from "../config";
+import { auth, Collection, db } from "../config";
 
 export const updateDocument = async <T extends WithFieldValue<DocumentData>>(
   collection: Collection,
@@ -14,5 +15,6 @@ export const updateDocument = async <T extends WithFieldValue<DocumentData>>(
 ) => {
   const documentRef = doc(db, collection, id);
 
+  await updateProfile(auth.currentUser!, data);
   await updateDoc(documentRef, data);
 };

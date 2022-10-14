@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 
 import { Button, Input } from "../../../../components/UI";
 import { ROUTES } from "../../../../utils/constants";
-import { useStore } from "../../../../utils/contexts";
 import { useLoginWithEmailAndPasswordMutation } from "../../../../utils/firebase/hooks";
 import { getEmailRegExp } from "../../../../utils/helpers";
 
@@ -17,7 +16,6 @@ interface SignInValues extends User {
 
 export const SignInForm: React.FC = () => {
   const navigate = useNavigate();
-  const { setStore } = useStore();
 
   const {
     handleSubmit,
@@ -31,7 +29,6 @@ export const SignInForm: React.FC = () => {
       options: {
         onSuccess: () => {
           navigate(ROUTES.POKEMONS);
-          setStore({ session: { isLoggedIn: true } });
         },
         onError: (error: FirebaseError) => {
           switch (error.code) {
@@ -61,15 +58,14 @@ export const SignInForm: React.FC = () => {
       },
     });
 
+  const loginHandler = handleSubmit(({ password, ...user }) =>
+    loginWithEmailAndPassword({ password, email: user.email })
+  );
+
   const isDisabled = isLoading && isSubmitting;
 
   return (
-    <form
-      className={styles.form}
-      onSubmit={handleSubmit(({ password, ...user }) =>
-        loginWithEmailAndPassword({ password, email: user.email })
-      )}
-    >
+    <form className={styles.form} onSubmit={loginHandler}>
       <Input
         {...register("email", {
           required: "Field is required!",
@@ -92,7 +88,7 @@ export const SignInForm: React.FC = () => {
         disabled={isDisabled}
         error={errors.password?.message}
       />
-      <Button variant="blue" type="submit">
+      <Button variant="primary" type="submit">
         GO!
       </Button>
     </form>

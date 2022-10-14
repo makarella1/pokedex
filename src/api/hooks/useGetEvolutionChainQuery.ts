@@ -1,6 +1,6 @@
-import { useQuery } from '@tanstack/react-query';
+import { useQuery } from "@tanstack/react-query";
 
-import { getEvolutionChain } from '../../requests';
+import { getEvolutionChain } from "../requests";
 
 interface UseGetEvolutionChainQueryParams {
   id: number;
@@ -11,7 +11,7 @@ export const useGetEvolutionChain = (
   settings?: RequestQuerySettings<typeof getEvolutionChain>
 ) =>
   useQuery(
-    ['evolution-chain', params.id],
+    ["evolution-chain", params.id],
     () =>
       getEvolutionChain({
         params,

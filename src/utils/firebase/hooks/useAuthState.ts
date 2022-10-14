@@ -6,12 +6,14 @@ import { usePromise } from "../../hooks";
 import { auth, db } from "../config";
 
 export const useAuthState = () => {
-  const { data, setData, isLoading, setIsLoading } = usePromise<User>();
+  const { data, setData, isLoading, setIsLoading } =
+    usePromise<UserDocument | null>();
 
   React.useEffect(() => {
     const listenter = onAuthStateChanged(auth, async (user) => {
       if (!user) {
-        return setIsLoading(false);
+        setIsLoading(false);
+        return setData(null);
       }
 
       const userDoc = await getDoc(doc(db, "users", user.uid));

@@ -3,6 +3,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 
 import { useGetPokemonQuery } from "../../../../api/hooks";
+import { Loader } from "../../../UI";
 
 import styles from "./PokemonTeamMember.module.css";
 
@@ -20,7 +21,7 @@ export const PokemonTeamMember: React.FC<PokemonTeamMemberProps> = ({
   const isData = pokemonData && !isLoading;
 
   if (!isData) {
-    return null;
+    return <Loader />;
   }
 
   const { data: pokemon } = pokemonData;

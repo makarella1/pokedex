@@ -1,11 +1,12 @@
-import React from "react";
+import { clsx } from "clsx";
+import { PropsWithChildren } from "react";
 
 import styles from "./PageLayout.module.css";
 
-interface PageLayoutProps {
-  children: React.ReactNode;
+interface PageLayoutProps extends PropsWithChildren {
+  className?: string;
 }
 
-export const PageLayout: React.FC<PageLayoutProps> = ({ children }) => (
-  <main className={styles.page}>{children}</main>
+export const PageLayout = ({ children, className }: PageLayoutProps) => (
+  <main className={clsx(styles.page, className)}>{children}</main>
 );

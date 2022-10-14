@@ -3,6 +3,10 @@
 }
 
 .avatar {
+  @apply relative flex cursor-pointer flex-col items-center;
+}
+
+.image {
   @apply h-32 w-32 rounded-full;
 }
 
@@ -16,6 +20,14 @@
 
 .infoItem span {
   @apply font-semibold;
+}
+
+.editImage {
+  @apply absolute left-1/2 top-28 -translate-x-1/2;
+}
+
+.edit {
+  @apply font-bold;
 }
 
 :global(.dark) .info {

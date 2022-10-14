@@ -16,7 +16,7 @@ export const ProfilePage: React.FC = () => {
 
   return (
     <PageLayout>
-      <UserCard user={user} />
+      <UserCard user={user} className={styles.card} />
       {user.pokemons.length > 0 && (
         <div className={styles.pokemons}>
           {user.pokemons.map((pokemon) => (

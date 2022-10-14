@@ -1,0 +1,11 @@
+.button {
+  @apply flex h-8 w-8 items-center justify-center rounded-full bg-blue-400 text-white;
+}
+
+.button[type="button"] {
+  @apply flex h-8 w-8 items-center justify-center rounded-full bg-blue-400 text-white;
+}
+
+.button[type="submit"] {
+  @apply flex h-8 w-8 items-center justify-center rounded-full bg-blue-400 text-white;
+}

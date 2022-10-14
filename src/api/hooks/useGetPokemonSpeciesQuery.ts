@@ -1,6 +1,6 @@
-import { useQuery } from '@tanstack/react-query';
+import { useQuery } from "@tanstack/react-query";
 
-import { getPokemonSpecies } from '../../requests';
+import { getPokemonSpecies } from "../requests";
 
 interface UseGetPokemonSpeciesQueryParams {
   id: number;
@@ -11,7 +11,7 @@ export const useGetPokemonSpeciesQuery = (
   settings?: RequestQuerySettings<typeof getPokemonSpecies>
 ) =>
   useQuery(
-    ['pokemon-form', params.id],
+    ["pokemon-form", params.id],
     () =>
       getPokemonSpecies({
         params,
