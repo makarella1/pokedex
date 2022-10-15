@@ -12,7 +12,7 @@ import {
 
 import styles from "./PokemonPage.module.css";
 
-export const PokemonPage = () => {
+const PokemonPage = () => {
   const { pokemonId } = useParams();
   const navigate = useNavigate();
 
@@ -101,3 +101,5 @@ export const PokemonPage = () => {
     </PageLayout>
   );
 };
+
+export default PokemonPage;

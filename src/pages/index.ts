@@ -1,6 +1,6 @@
-export * from "./AuthPage/AuthPage";
-export * from "./PokemonPage/PokemonPage";
-export * from "./PokemonsPage/PokemonsPage";
-export * from "./ProfilePage/ProfilePage";
-export * from "./SettingsPage/SettingsPage";
-export * from "./UsersPage/UsersPage";
+export { default as AuthPage } from "./AuthPage/AuthPage";
+export { default as PokemonPage } from "./PokemonPage/PokemonPage";
+export { default as PokemonsPage } from "./PokemonsPage/PokemonsPage";
+export { default as ProfilePage } from "./ProfilePage/ProfilePage";
+export { default as SettingsPage } from "./SettingsPage/SettingsPage";
+export { default as UsersPage } from "./UsersPage/UsersPage";

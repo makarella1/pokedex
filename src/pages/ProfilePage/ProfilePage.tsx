@@ -6,7 +6,7 @@ import { useAuthState } from "../../utils/firebase/hooks";
 
 import styles from "./ProfilePage.module.css";
 
-export const ProfilePage = () => {
+const ProfilePage = () => {
   const { data: user, isLoading } = useAuthState();
 
   if (isLoading || !user) {
@@ -26,3 +26,5 @@ export const ProfilePage = () => {
     </PageLayout>
   );
 };
+
+export default ProfilePage;

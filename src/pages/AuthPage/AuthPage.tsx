@@ -12,7 +12,7 @@ import { SignInForm, SignUpForm } from "./components";
 
 import styles from "./AuthPage.module.css";
 
-export const AuthPage = () => {
+const AuthPage = () => {
   const [isSignedUp, setIsSignedUp] = React.useState(false);
 
   const navigate = useNavigate();
@@ -47,3 +47,5 @@ export const AuthPage = () => {
     </PageLayout>
   );
 };
+
+export default AuthPage;

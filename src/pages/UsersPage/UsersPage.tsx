@@ -5,7 +5,7 @@ import { useUsersCollection } from "../../utils/firebase/hooks";
 
 import styles from "./UsersPage.module.css";
 
-export const UsersPage = () => {
+const UsersPage = () => {
   const { data: users, isLoading } = useUsersCollection();
 
   if (isLoading || !users) {
@@ -22,3 +22,5 @@ export const UsersPage = () => {
     </PageLayout>
   );
 };
+
+export default UsersPage;

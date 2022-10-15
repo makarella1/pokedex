@@ -9,7 +9,7 @@ import { useInView } from "../../utils/hooks";
 
 import styles from "./PokemonsPage.module.css";
 
-export const PokemonsPage = () => {
+const PokemonsPage = () => {
   const { data, isLoading, fetchNextPage, hasNextPage } =
     useGetPokemonInfiniteQuery();
 
@@ -88,3 +88,5 @@ export const PokemonsPage = () => {
     </PageLayout>
   );
 };
+
+export default PokemonsPage;

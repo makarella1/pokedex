@@ -13,7 +13,7 @@ import {
 
 import styles from "./SettingsPage.module.css";
 
-export const SettingsPage = () => {
+const SettingsPage = () => {
   const { data: user, isLoading } = useAuthState();
   const { uploadFile } = useUploadFile();
   const updateDocumentMutation = useUpdateDocumentMutation();
@@ -124,3 +124,5 @@ export const SettingsPage = () => {
     </PageLayout>
   );
 };
+
+export default SettingsPage;
