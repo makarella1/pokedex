@@ -9,11 +9,11 @@ import { useInView } from "../../utils/hooks";
 
 import styles from "./PokemonsPage.module.css";
 
-export const PokemonsPage: React.FC = () => {
+export const PokemonsPage = () => {
   const { data, isLoading, fetchNextPage, hasNextPage } =
     useGetPokemonInfiniteQuery();
 
-  const { ref, isInView } = useInView();
+  const { isInView, ref } = useInView();
   const [selectedPokemonId, setSelectedPokemonId] = React.useState<
     Pokemon["id"] | null
   >(null);

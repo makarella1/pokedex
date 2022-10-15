@@ -1,5 +1,4 @@
 import { nanoid } from "nanoid";
-import React from "react";
 
 import { useGetEvolutionChain } from "../../../api/hooks";
 import { getEvolutionChain } from "../../../utils/helpers";
@@ -14,10 +13,10 @@ interface PokemonEvolutionChainProps {
   pokemonName: Pokemon["name"];
 }
 
-export const PokemonEvolutionChain: React.FC<PokemonEvolutionChainProps> = ({
+export const PokemonEvolutionChain = ({
   id,
   pokemonName,
-}) => {
+}: PokemonEvolutionChainProps) => {
   const { data: evolutionChainData, isLoading: isEvolutionChainLoading } =
     useGetEvolutionChain({ id });
 

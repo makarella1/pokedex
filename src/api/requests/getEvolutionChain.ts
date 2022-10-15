@@ -1,10 +1,10 @@
-import { AxiosRequestConfig } from 'axios';
+import { AxiosRequestConfig } from "axios";
 
-import { pokemonApi } from '../../../pokemonApi';
+import { pokemonApi } from "../pokemonApi";
 
 interface GetEvolutionChainParams {
   params: {
-    id: Pokemon['id'];
+    id: Pokemon["id"];
   };
   config?: AxiosRequestConfig;
 }

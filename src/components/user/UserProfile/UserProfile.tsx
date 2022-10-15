@@ -11,7 +11,7 @@ interface UserProfileProps {
   user: Partial<User>;
 }
 
-export const UserProfile: React.FC<UserProfileProps> = ({ user }) => {
+export const UserProfile = ({ user }: UserProfileProps) => {
   const logout = useLogoutMutation();
 
   return (

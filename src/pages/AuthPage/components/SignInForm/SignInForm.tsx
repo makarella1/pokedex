@@ -14,7 +14,7 @@ interface SignInValues extends User {
   email: User["email"];
 }
 
-export const SignInForm: React.FC = () => {
+export const SignInForm = () => {
   const navigate = useNavigate();
 
   const {
@@ -73,6 +73,7 @@ export const SignInForm: React.FC = () => {
         })}
         placeholder="Email"
         disabled={isDisabled}
+        // @ts-ignore
         error={errors.email?.message}
       />
       <Input

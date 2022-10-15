@@ -1,4 +1,3 @@
-import React from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
 import { useGetPokemonQuery, useGetPokemonSpeciesQuery } from "../../api/hooks";
@@ -13,7 +12,7 @@ import {
 
 import styles from "./PokemonPage.module.css";
 
-export const PokemonPage: React.FC = () => {
+export const PokemonPage = () => {
   const { pokemonId } = useParams();
   const navigate = useNavigate();
 

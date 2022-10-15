@@ -12,7 +12,7 @@ import { SignInForm, SignUpForm } from "./components";
 
 import styles from "./AuthPage.module.css";
 
-export const AuthPage: React.FC = () => {
+export const AuthPage = () => {
   const [isSignedUp, setIsSignedUp] = React.useState(false);
 
   const navigate = useNavigate();

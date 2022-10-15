@@ -1,5 +1,4 @@
 import { clsx } from "clsx";
-import React from "react";
 import { useNavigate } from "react-router-dom";
 
 import { useGetPokemonQuery } from "../../../../api/hooks";
@@ -11,9 +10,7 @@ interface PokemonTeamMemberProps {
   name: Pokemon["name"];
 }
 
-export const PokemonTeamMember: React.FC<PokemonTeamMemberProps> = ({
-  name,
-}) => {
+export const PokemonTeamMember = ({ name }: PokemonTeamMemberProps) => {
   const navigate = useNavigate();
 
   const { data: pokemonData, isLoading } = useGetPokemonQuery({ option: name });

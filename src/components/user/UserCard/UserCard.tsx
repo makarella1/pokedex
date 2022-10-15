@@ -1,6 +1,5 @@
 import clsx from "clsx";
 import { nanoid } from "nanoid";
-import React from "react";
 
 import userDefault from "../../../assets/img/user_default.png";
 import { auth } from "../../../utils/firebase/config";
@@ -15,7 +14,7 @@ interface UserCardProps {
   className?: string;
 }
 
-export const UserCard: React.FC<UserCardProps> = ({ user, className }) => {
+export const UserCard = ({ user, className }: UserCardProps) => {
   const logout = useLogoutMutation();
 
   return (

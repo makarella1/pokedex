@@ -1,6 +1,6 @@
-import { AxiosRequestConfig } from 'axios';
+import { AxiosRequestConfig } from "axios";
 
-import { pokemonApi } from '../../pokemonApi';
+import { pokemonApi } from "../pokemonApi";
 
 interface GetPokemonsParams {
   params: {

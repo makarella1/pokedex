@@ -1,5 +1,4 @@
 import { clsx } from "clsx";
-import React from "react";
 import { NavLink } from "react-router-dom";
 
 import { ROUTES } from "../../../../utils/constants";
@@ -10,9 +9,7 @@ interface ActiveMobileMenuProps {
   onClose: () => void;
 }
 
-export const ActiveMobileMenu: React.FC<ActiveMobileMenuProps> = ({
-  onClose,
-}) => (
+export const ActiveMobileMenu = ({ onClose }: ActiveMobileMenuProps) => (
   <div className={styles.menuActive}>
     <NavLink
       className={({ isActive }) =>

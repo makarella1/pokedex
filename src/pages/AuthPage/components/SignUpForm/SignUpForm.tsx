@@ -13,7 +13,7 @@ interface SignUpValues extends User {
   password: string;
 }
 
-export const SignUpForm: React.FC = () => {
+export const SignUpForm = () => {
   const navigate = useNavigate();
 
   const {

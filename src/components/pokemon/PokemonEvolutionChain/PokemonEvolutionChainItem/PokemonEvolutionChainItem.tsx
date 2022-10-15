@@ -1,6 +1,5 @@
 import { clsx } from "clsx";
 import { nanoid } from "nanoid";
-import React from "react";
 import { useNavigate } from "react-router-dom";
 
 import { useGetPokemonQuery } from "../../../../api/hooks";
@@ -15,9 +14,10 @@ interface PokemonEvolutionChainItemProps {
   isActive?: boolean;
 }
 
-export const PokemonEvolutionChainItem: React.FC<
-  PokemonEvolutionChainItemProps
-> = ({ name, isActive }) => {
+export const PokemonEvolutionChainItem = ({
+  name,
+  isActive,
+}: PokemonEvolutionChainItemProps) => {
   const { data: pokemonData, isLoading: isPokemonDataLoading } =
     useGetPokemonQuery({ option: name });
 

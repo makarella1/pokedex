@@ -1,6 +1,6 @@
 import { useInfiniteQuery } from "@tanstack/react-query";
 
-import { getPokemons } from "../requests/pokemons";
+import { getPokemons } from "../requests/getPokemons";
 
 const POKEMONS_REQUEST_LIMIT = 30;
 const MAX_POKEMONS_COUNT = 900;

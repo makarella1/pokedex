@@ -1,14 +1,8 @@
-import React from "react";
+import React, { PropsWithChildren } from "react";
 
 import { ThemeContext } from "./ThemeContext";
 
-interface ThemeContextProviderProps {
-  children: React.ReactNode;
-}
-
-export const ThemeContextProvider: React.FC<ThemeContextProviderProps> = ({
-  children,
-}) => {
+export const ThemeContextProvider = ({ children }: PropsWithChildren) => {
   const [theme, setThemeContext] = React.useState<Theme>(
     (localStorage.getItem("theme") as Theme) ?? "dark"
   );

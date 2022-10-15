@@ -1,5 +1,3 @@
-import React from "react";
-
 import pokemonLogo from "../../../assets/img/pokemon_logo.png";
 import { Switcher } from "../../UI";
 
@@ -8,7 +6,7 @@ import { Hamburger } from "./MobileMenu/Hamburger";
 
 import styles from "./Navbar.module.css";
 
-export const Navbar: React.FC = () => (
+export const Navbar = () => (
   <nav className={styles.nav}>
     <div className={styles.left}>
       <img className={styles.logo} src={pokemonLogo} alt="Logo" />

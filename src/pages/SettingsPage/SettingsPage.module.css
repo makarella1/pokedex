@@ -30,6 +30,22 @@
   @apply font-bold;
 }
 
+.form {
+  @apply flex justify-between;
+}
+
+.input {
+  @apply rounded-lg px-4 text-black shadow-lg;
+}
+
+.buttons {
+  @apply flex gap-2;
+}
+
+.name {
+  @apply flex justify-between;
+}
+
 :global(.dark) .info {
   @apply bg-slate-600;
 }

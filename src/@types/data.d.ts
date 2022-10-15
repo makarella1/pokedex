@@ -22,6 +22,8 @@ interface PokemonDocument {
 
 type Theme = "dark" | "light";
 
+type Collection = "pokemons" | "users";
+
 interface NamedAPIResource {
   /** The name of the referenced resource */
   name: string;

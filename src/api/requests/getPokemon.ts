@@ -1,10 +1,10 @@
-import { AxiosRequestConfig } from 'axios';
+import { AxiosRequestConfig } from "axios";
 
-import { pokemonApi } from '../../pokemonApi';
+import { pokemonApi } from "../pokemonApi";
 
 interface GetPokemonParams {
   params: {
-    option: Pokemon['id'] | Pokemon['name'];
+    option: Pokemon["id"] | Pokemon["name"];
   };
   config?: AxiosRequestConfig;
 }

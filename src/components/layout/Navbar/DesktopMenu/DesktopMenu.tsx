@@ -1,12 +1,11 @@
 import { clsx } from "clsx";
-import React from "react";
 import { NavLink } from "react-router-dom";
 
 import { ROUTES } from "../../../../utils/constants";
 
 import styles from "./DesktopMenu.module.css";
 
-export const DesktopMenu: React.FC = () => (
+export const DesktopMenu = () => (
   <ul className={styles.navLinks}>
     <li>
       <NavLink

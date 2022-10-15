@@ -1,5 +1,4 @@
 import { nanoid } from "nanoid";
-import React from "react";
 
 import { useGetPokemonQuery } from "../../../api/hooks";
 import { Loader } from "../../UI";
@@ -11,7 +10,7 @@ interface PokemonShortCardProps {
   name: Pokemon["name"];
 }
 
-export const PokemonShortCard: React.FC<PokemonShortCardProps> = ({ name }) => {
+export const PokemonShortCard = ({ name }: PokemonShortCardProps) => {
   const { data: pokemonData, isLoading } = useGetPokemonQuery({ option: name });
 
   const isPokemonData = !isLoading && pokemonData;

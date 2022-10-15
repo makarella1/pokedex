@@ -1,12 +1,11 @@
 import { clsx } from "clsx";
-import React from "react";
 import { BsFillMoonStarsFill, BsFillSunFill } from "react-icons/bs";
 
 import { useTheme } from "../../../utils/hooks";
 
 import styles from "./Switcher.module.css";
 
-export const Switcher: React.FC = () => {
+export const Switcher = () => {
   const { theme, setTheme } = useTheme();
 
   return (

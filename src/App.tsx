@@ -1,4 +1,3 @@
-import React from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 
 import { Layout } from "./components/layout";
@@ -21,7 +20,7 @@ export const Auth = () => (
   </Routes>
 );
 
-const App: React.FC = () => {
+const App = () => {
   const { data: user, isLoading } = useAuthState();
 
   if (isLoading) {

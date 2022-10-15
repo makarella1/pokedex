@@ -16,10 +16,7 @@ interface PokemonModalProps {
   onCloseModal: () => void;
 }
 
-export const PokemonModal: React.FC<PokemonModalProps> = ({
-  id,
-  onCloseModal,
-}) => {
+export const PokemonModal = ({ id, onCloseModal }: PokemonModalProps) => {
   const navigate = useNavigate();
 
   const { data, isLoading } = useGetPokemonQuery({ option: id });

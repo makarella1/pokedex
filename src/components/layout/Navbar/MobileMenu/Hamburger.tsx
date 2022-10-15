@@ -6,7 +6,7 @@ import { ActiveMobileMenu } from "./ActiveMobileMenu";
 
 import styles from "./Hamburger.module.css";
 
-export const Hamburger: React.FC = () => {
+export const Hamburger = () => {
   const [isActive, setIsActive] = React.useState(false);
 
   React.useEffect(() => {

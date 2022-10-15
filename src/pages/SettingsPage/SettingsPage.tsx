@@ -13,7 +13,7 @@ import {
 
 import styles from "./SettingsPage.module.css";
 
-export const SettingsPage: React.FC = () => {
+export const SettingsPage = () => {
   const { data: user, isLoading } = useAuthState();
   const { uploadFile } = useUploadFile();
   const updateDocumentMutation = useUpdateDocumentMutation();
@@ -88,7 +88,7 @@ export const SettingsPage: React.FC = () => {
             <span>{user.uid}</span>
           </p>
           {!isEditing && (
-            <div className="flex justify-between">
+            <div className={styles.name}>
               <p className={styles.infoItem}>
                 Username: <span>{user.displayName}</span>
               </p>
@@ -98,13 +98,13 @@ export const SettingsPage: React.FC = () => {
             </div>
           )}
           {isEditing && (
-            <form className="flex justify-between" onSubmit={nameChangeHandler}>
+            <form className={styles.form} onSubmit={nameChangeHandler}>
               <input
-                className="rounded-lg px-4 text-black shadow-lg"
+                className={styles.input}
                 type="text"
                 {...register("displayName")}
               />
-              <div className="flex gap-2">
+              <div className={styles.buttons}>
                 <SettingsButton
                   className={styles.edit}
                   type="button"

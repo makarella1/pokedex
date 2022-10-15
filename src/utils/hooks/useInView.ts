@@ -1,29 +1,19 @@
 import React from "react";
 
 export const useInView = (options?: IntersectionObserverInit) => {
-  const [observer, setObserver] = React.useState<IntersectionObserver | null>(
-    null
-  );
-  const [isInView, setIsInView] = React.useState(false);
-  const ref = React.useRef<any>();
+  const [isInView, setInView] = React.useState(false);
 
-  const callback = React.useCallback(
-    (entries: IntersectionObserverEntry[]) =>
-      setIsInView(entries[0].isIntersecting),
-    [isInView]
-  );
-
-  React.useEffect(() => {
-    if (ref.current) {
-      const observer = new IntersectionObserver(callback, options);
-      setObserver(observer);
-      observer.observe(ref.current);
+  const setRef = React.useCallback((node: Element | null) => {
+    if (!node) {
+      return;
     }
 
-    return () => {
-      observer?.disconnect();
-    };
+    const observer = new IntersectionObserver(([entry]) => {
+      setInView(entry.isIntersecting);
+    }, options);
+
+    observer.observe(node);
   }, []);
 
-  return { ref, isInView };
+  return { isInView, ref: setRef };
 };
